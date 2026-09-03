@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IDES — RUST原生记忆AI智能体底座</title>
+<meta name="description" content="IDES — rust native memory ai agent harness / RUST原生记忆AI智能体底座。永远记得你的 AI 智能体。">
+<link rel="stylesheet" href="terminal.css">
+<style>
+/* =========================================
+   IDES 官网 — 终端风单页滚动
+   风格继承 terminal.css（产品 UI 同款词汇表）
+   ========================================= */
+
+html { scroll-behavior: smooth; }
+
+body {
+  /* 覆盖 terminal.css 的网格点背景，Hero 更纯净 */
+  background-image: none;
+}
+
+/* 滚动条：去掉 track 虚线边框（terminal.css 产品样式在官网上太突兀） */
+::-webkit-scrollbar-track { border-left: none; }
+
+/* ---------- 顶部导航（link 风格） ---------- */
+.site-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 28px;
+  background: rgba(3, 3, 3, 0.92);
+  border-bottom: 1px dashed var(--t-green-dim);
+  backdrop-filter: blur(4px);
+}
+.site-nav-brand {
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: var(--t-green);
+  text-shadow: 0 0 8px var(--t-shadow-strong);
+  text-decoration: none;
+  font-size: 15px;
+}
+.site-nav-menu {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.site-nav-menu a {
+  color: var(--t-green-dim);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  transition: color 0.2s, text-shadow 0.2s;
+}
+.site-nav-menu a:hover {
+  color: var(--t-green);
+  text-shadow: 0 0 8px var(--t-shadow-strong);
+}
+.site-nav-menu a.lang {
+  color: var(--t-cyan);
+  border-left: 1px dashed var(--t-green-dim);
+  margin-left: 6px;
+  padding-left: 14px;
+}
+
+/* ---------- 通用 section ---------- */
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 90px 24px 60px;
+  max-width: 980px;
+  margin: 0 auto;
+  position: relative;
+}
+.page + .page {
+  border-top: 1px dashed var(--t-green-dim);
+}
+.page-tag {
+  font-size: 12px;
+  color: var(--t-green-dim);
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+.page-title {
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  color: var(--t-green);
+  text-shadow: 0 0 14px var(--t-shadow-soft);
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+.page-title .accent { color: var(--t-cyan); text-shadow: 0 0 14px rgba(0, 217, 255, 0.3); }
+/* 中文名词 — 终端选中高亮（绿反白），视觉冲击 */
+.page-title .sel-hl {
+  background: var(--t-green);
+  color: var(--bg-base);
+  padding: 2px 10px;
+  display: inline-block;
+  box-shadow: 0 0 18px var(--t-shadow-strong);
+}
+.page-sub {
+  font-size: 16px;
+  color: var(--t-green-dim);
+  letter-spacing: 1px;
+  margin-bottom: 36px;
+  line-height: 1.8;
+}
+.page-sub strong { color: var(--t-green); font-weight: normal; }
+
+/* ---------- Hero（StartScreen 设计） ---------- */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at 50% 35%, #0a1408 0%, #030303 75%);
+  padding: 60px 20px;
+}
+.hero-brand {
+  font-size: 72px;
+  font-weight: 800;
+  letter-spacing: 14px;
+  color: var(--t-green);
+  text-shadow: 0 0 12px var(--t-green), 0 0 24px var(--t-green), 0 0 60px rgba(0, 255, 65, 0.45);
+  margin-left: 14px; /* 抵消 letter-spacing 右偏 */
+}
+.hero-slogan {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--t-green-dim);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+.hero-desc {
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--t-green-dim);
+  letter-spacing: 2px;
+  opacity: 0.85;
+}
+.hero-actions {
+  margin-top: 48px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.hero-actions .t-btn {
+  width: 220px;
+  padding: 12px 20px;
+  font-size: 15px;
+  letter-spacing: 2px;
+  text-align: center;
+  white-space: nowrap;
+}
+.hero-version {
+  position: absolute;
+  bottom: 22px;
+  right: 26px;
+  font-size: 11px;
+  color: var(--t-green-dim);
+  letter-spacing: 1px;
+}
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  color: var(--t-green-dim);
+  letter-spacing: 2px;
+  animation: hint-blink 2.4s infinite;
+}
+@keyframes hint-blink {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+
+/* ---------- 特性卡 ---------- */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 30px;
+}
+.feature-card {
+  border: 1px solid var(--t-green-dim);
+  border-top: 3px solid var(--t-green-dim);
+  background: var(--bg-surface);
+  padding: 18px 18px 16px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.feature-card:hover {
+  border-color: var(--t-green);
+  border-top-color: var(--t-green);
+  box-shadow: 0 0 12px var(--t-shadow-soft);
+}
+.feature-card .fc-head {
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--t-green);
+  letter-spacing: 2px;
+  border-bottom: 1px dashed var(--t-green-dim);
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+}
+.feature-card .fc-body {
+  font-size: 13px;
+  color: var(--t-green-dim);
+  line-height: 1.8;
+}
+.feature-card .fc-tagline {
+  display: block;
+  margin-top: 8px;
+  color: var(--t-cyan, #2dd4bf);
+  font-size: 12px;
+}
+
+/* ---------- 引用块 ---------- */
+.quote-line {
+  margin-top: 26px;
+  padding: 12px 18px;
+  border-left: 3px solid var(--t-green-dim);
+  color: var(--t-green-dim);
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-style: italic;
+  white-space: pre-line;
+}
+.quote-line .src {
+  font-style: normal;
+  font-size: 11px;
+  color: var(--t-green-dim);
+  opacity: 0.7;
+  margin-left: 8px;
+}
+
+/* ---------- 终端窗口（官方 t-window，IDES 界面占位） ---------- */
+.t-window-body { min-height: 260px; } /* 三处演示窗口等高，视觉整齐 */
+.term-controls { display: flex; gap: 6px; }
+.term-controls span {
+  display: inline-block;
+  width: 10px; height: 10px;
+  border: 1px solid var(--t-green-dim);
+  font-size: 8px;
+  line-height: 10px;
+  text-align: center;
+  color: var(--t-green-dim);
+}
+.chat-line { display: block; margin-bottom: 10px; white-space: pre-wrap; word-break: break-word; }
+.chat-user { color: var(--t-cyan); }
+.chat-ides { color: var(--t-green); }
+.chat-sys  { color: var(--t-green-dim); opacity: 0.7; font-size: 12px; }
+.chat-boot { color: var(--t-yellow); font-size: 12px; }
+.typing-cursor::after {
+  content: "█";
+  animation: cursor-blink 0.9s steps(1) infinite;
+  color: var(--t-green);
+}
+@keyframes cursor-blink { 50% { opacity: 0; } }
+
+/* ---------- 卷轴：上下文窗口视觉 ---------- */
+.scroll-visual {
+  border: 1px solid var(--t-green-dim);
+  background: var(--bg-base);
+  padding: 22px;
+  margin-bottom: 26px;
+  font-size: 13px;
+}
+.sv-line { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--t-green-dim); }
+.sv-line:last-child { margin-bottom: 0; }
+.sv-label { width: 130px; flex-shrink: 0; letter-spacing: 1px; font-size: 12px; }
+.sv-bar {
+  flex: 1;
+  height: 14px;
+  border: 1px solid var(--t-green-dim);
+  background: rgba(0, 255, 65, 0.03);
+  position: relative;
+  overflow: hidden;
+}
+.sv-bar .fill {
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  background: var(--t-green);
+  box-shadow: 0 0 8px var(--t-shadow-strong);
+  width: 0%;
+}
+
+/* ---------- 卷轴：忙疯的 agent 日志窗 ---------- */
+.busy-window .t-window-body {
+  min-height: 260px;
+  max-height: 280px;
+  overflow-y: auto;
+}
+.busy-window .chat-line { font-size: 12px; }
+
+/* ---------- 影分身：水平 git graph ---------- */
+.git-graph {
+  min-height: 240px;
+  max-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+}
+.git-graph svg {
+  width: 100%;
+  height: auto;
+  max-height: 260px;
+}
+.git-graph .gg-node { animation: gg-appear 0.35s ease-out; }
+.git-graph .gg-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: gg-draw 0.5s ease-out forwards;
+}
+.git-graph .gg-blink { animation: gg-blink 0.45s step-end infinite; }
+.git-graph .gg-label { font-family: var(--font-mono); font-size: 11px; }
+@keyframes gg-appear { from { opacity: 0; } to { opacity: 1; } }
+@keyframes gg-draw { to { stroke-dashoffset: 0; } }
+@keyframes gg-blink { 50% { opacity: 0.15; } }
+
+/* ---------- 卷轴：传统 vs 卷轴 动态对比 ---------- */
+.sv-bar { position: relative; overflow: hidden; }
+.sv-face {
+  width: 110px;
+  flex-shrink: 0;
+  text-align: right;
+  font-size: 14px;
+  color: var(--t-yellow);
+  letter-spacing: 0;
+}
+.fill.trad { width: 8%; transition: width 0.5s ease; }
+.fill.trad.full {
+  background: var(--t-red);
+  box-shadow: 0 0 12px rgba(255, 60, 60, 0.5);
+}
+.trad-head {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 8%;
+  color: var(--t-red);
+  font-size: 12px;
+  text-shadow: 0 0 8px rgba(255, 60, 60, 0.6);
+  animation: blink-red 0.6s step-end infinite;
+  white-space: nowrap;
+}
+@keyframes blink-red { 50% { opacity: 0.3; } }
+.fill.scroll {
+  width: 42%;
+  animation: scroll-wiggle 0.8s ease-in-out infinite;
+}
+@keyframes scroll-wiggle {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(24px); }
+}
+
+/* ---------- 影分身：节点图 ---------- */
+.clone-graph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin: 34px 0;
+  flex-wrap: wrap;
+}
+.clone-node {
+  border: 1px solid var(--t-green-dim);
+  background: var(--bg-surface);
+  padding: 14px 22px;
+  text-align: center;
+  min-width: 150px;
+}
+.clone-node.main { border-color: var(--t-green); box-shadow: 0 0 14px var(--t-shadow-soft); }
+.clone-node .cn-name { font-size: 14px; font-weight: bold; letter-spacing: 2px; color: var(--t-green); }
+.clone-node .cn-sub { font-size: 11px; color: var(--t-green-dim); margin-top: 4px; letter-spacing: 1px; }
+.clone-link {
+  width: 60px;
+  border-top: 1px dashed var(--t-green-dim);
+  position: relative;
+  align-self: flex-start;
+  margin-top: 36px;
+}
+.clone-link::after {
+  content: ">";
+  position: absolute;
+  right: -8px;
+  top: -11px;
+  color: var(--t-green-dim);
+  font-size: 11px;
+}
+
+/* ---------- 页脚 ---------- */
+.site-footer {
+  border-top: 1px dashed var(--t-green-dim);
+  padding: 40px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--t-green-dim);
+}
+.site-footer .footer-links { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
+.site-footer a {
+  color: var(--t-green-dim);
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color 0.2s, text-shadow 0.2s;
+}
+.site-footer a:hover { color: var(--t-green); text-shadow: 0 0 8px var(--t-shadow-strong); }
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 640px) {
+  .page-title { font-size: 30px; letter-spacing: 2px; }
+  .hero-brand { font-size: 46px; letter-spacing: 8px; }
+  .site-nav { padding: 8px 14px; }
+  .sv-label { width: 100px; }
+  .clone-link { width: 30px; }
+}
+</style>
+</head>
+<body class="t-crt">
+
+<!-- ============ 导航 ============ -->
+<nav class="site-nav">
+  <a class="site-nav-brand" href="#home">IDES</a>
+  <div class="site-nav-menu">
+    <a href="#nosession">NO_SESSION</a>
+    <a href="#gnm">GNM</a>
+    <a href="#scrolls">SCROLLS</a>
+    <a href="#equipment">EQUIPMENT</a>
+    <a href="#clones">CLONES</a>
+    <a class="lang" href="index-en.html">[ EN ]</a>
+  </div>
+</nav>
+
+<!-- ============ 第一页：Hero（StartScreen 设计） ============ -->
+<section id="home" class="hero">
+  <div class="hero-brand t-glow">IDES</div>
+  <div class="hero-slogan">I Digitally Exist &amp; Sense.</div>
+  <div class="hero-desc">RUST原生记忆AI智能体底座</div>
+
+  <div class="hero-actions">
+    <a class="t-btn" href="https://github.com/kaluluosi/IDES/releases" target="_blank" rel="noopener">[ 下载 ]</a>
+    <a class="t-btn ghost" href="https://github.com/kaluluosi/IDES" target="_blank" rel="noopener">[ GITHUB ]</a>
+  </div>
+
+  <div class="hero-version">v0.7.5</div>
+  <div class="hero-scroll-hint">SCROLL ▼</div>
+</section>
+
+<!-- ============ 第二页：NO SESSION ============ -->
+<section id="nosession" class="page">
+  <div class="page-tag">&gt; SECTION 01 / IDENTITY</div>
+  <h2 class="page-title">&gt; <span class="sel-hl">无界</span> <span class="accent">NO_SESSION</span></h2>
+  <p class="page-sub">
+    没有 <strong>SESSION</strong> 概念 —— 没有「新对话」「旧对话」。
+    永远是<strong>同一个 AGENT</strong>，永远记得你，记得自己。
+  </p>
+
+  <div class="t-window">
+    <div class="t-window-header">
+      <span>root@ides:~# whoami</span>
+      <span class="term-controls"><span>-</span><span>□</span><span>X</span></span>
+    </div>
+    <div class="t-window-body">
+      <span class="chat-line chat-sys">&gt; 其他 AI：SESSION_0x001 ... [ 已丢弃 ]</span>
+      <span class="chat-line chat-sys">&gt; 其他 AI：SESSION_0x002 ... [ 已丢弃 ]</span>
+      <span class="chat-line chat-sys">&gt; 其他 AI：SESSION_0x003 ... [ 已丢弃 ]</span>
+      <span class="chat-line chat-ides">&gt; IDES：没有 session。我是同一个我。</span>
+      <span class="chat-line chat-ides">&gt; IDES：我记得你。一直记得。</span>
+    </div>
+  </div>
+
+  <div class="quote-line">
+    &gt; 建之以常无有，主之以太一。
+    &gt; 以虚无为根本，以太一为宗主。
+    <span class="src">—— 《庄子·天下》</span>
+  </div>
+</section>
+
+<!-- ============ 第三页：GNM 记忆系统 ============ -->
+<section id="gnm" class="page">
+  <div class="page-tag">&gt; SECTION 02 / MEMORY</div>
+  <h2 class="page-title">&gt; <span class="sel-hl">记忆</span> <span class="accent">GHOST_NATIVE_MEMORY</span></h2>
+  <p class="page-sub">原生记忆引擎，沉淀每一次对话。</p>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="fc-head">认知连续性</div>
+      <div class="fc-body">记忆不是缓存，是认知的一部分。对话之间无缝衔接，上下文永不丢失。</div>
+    </div>
+    <div class="feature-card">
+      <div class="fc-head">记忆储存</div>
+      <div class="fc-body">自动沉积记忆库，跨会话保留。重启、换机，记忆随行。</div>
+    </div>
+    <div class="feature-card">
+      <div class="fc-head">开箱即用</div>
+      <div class="fc-body">无需任何设置。装好就是满血记忆，零配置起步。</div>
+    </div>
+  </div>
+
+  <!-- 对话动画：一直记得 -->
+  <div class="t-window" id="gnm-demo">
+    <div class="t-window-header">
+      <span>GNM MEMORY ENGINE — DEMO</span>
+      <span class="term-controls"><span>-</span><span>□</span><span>X</span></span>
+    </div>
+    <div class="t-window-body" id="gnm-lines"></div>
+  </div>
+
+  <div class="quote-line">
+    &gt; 记忆和意识，本来就不是能够被物理保存的东西。
+    &gt; 所谓「灵魂」，也只是被记忆和意识共同维持着的一个「现象」。
+    <span class="src">—— 《Ghost In The Shell》</span>
+  </div>
+</section>
+
+<!-- ============ 第四页：卷轴 Scrolls ============ -->
+<section id="scrolls" class="page">
+  <div class="page-tag">&gt; SECTION 03 / CONTEXT</div>
+  <h2 class="page-title">&gt; <span class="sel-hl">卷轴</span> <span class="accent">SCROLLS</span></h2>
+  <p class="page-sub">上下文管理算法 —— 极致上下文管理，无限上下文预算，全自动。</p>
+
+  <div class="t-window busy-window">
+    <div class="t-window-header">
+      <span>AGENT_LIFELOG — TURN #42 · 忙疯现场</span>
+      <span class="term-controls"><span>-</span><span>□</span><span>X</span></span>
+    </div>
+    <div class="t-window-body" id="busy-lines">
+      <span class="chat-line chat-sys">&gt; turn #42 | iter 1/8 — 收到用户消息...</span>
+    </div>
+  </div>
+
+  <div class="scroll-visual">
+    <div class="sv-line">
+      <span class="sv-label">传统</span>
+      <div class="sv-bar">
+        <div class="fill trad" id="trad-fill"></div>
+        <span class="trad-head" id="trad-head"></span>
+      </div>
+      <span class="sv-face" id="trad-face">(＃°Д°)！！</span>
+    </div>
+    <div class="sv-line">
+      <span class="sv-label">卷轴</span>
+      <div class="sv-bar">
+        <div class="fill scroll" id="scroll-fill"></div>
+        <span class="scroll-head" id="scroll-head"></span>
+      </div>
+      <span class="sv-face" id="scroll-face">(ˊ_＞ˋ)</span>
+    </div>
+  </div>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="fc-head">极致管理</div>
+      <div class="fc-body">上下文窗口智能滚动，重点永远在视野内，老内容自动归档。</div>
+    </div>
+    <div class="feature-card">
+      <div class="fc-head">无限预算</div>
+      <div class="fc-body">没有「上下文不够了」——长对话也能一路聊到底。</div>
+    </div>
+    <div class="feature-card">
+      <div class="fc-head">全自动</div>
+      <div class="fc-body">零配置零干预。卷轴自己卷，你只管聊。</div>
+    </div>
+  </div>
+
+  <div class="quote-line">
+    &gt; 博观而约取，厚积而薄发。
+    &gt; 广泛地阅览而简要地吸取，丰富地积累而精当地表达。
+    <span class="src">—— 苏轼《稼说·送张琥》</span>
+  </div>
+
+  <div class="quote-line">
+    &gt; 温故而知新，可以为师矣。
+    &gt; 温习旧知，方有新得。
+    <span class="src">—— 《论语·为政》</span>
+  </div>
+
+</section>
+
+<!-- ============ 第五页：强袭挂件 ============ -->
+<section id="equipment" class="page">
+  <div class="page-tag">&gt; SECTION 04 / TOOLING</div>
+  <h2 class="page-title">&gt; <span class="sel-hl">强袭挂件</span> <span class="accent">STRIKE_EQUIPMENT</span></h2>
+  <p class="page-sub"><strong>I MAKE MY OWN TOOL!</strong> — 外挂工具体系，让 AGENT 自己造工具。</p>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="fc-head">工具链随行</div>
+      <div class="fc-body">mise 把工具链装进 U 盘 bin 随身带，PATH 热重载实时生效。</div>
+    </div>
+    <div class="feature-card">
+      <div class="fc-head">MCP 外挂</div>
+      <div class="fc-body">MCP 服务器即插即用，写 toml 就能接入新能力。</div>
+    </div>
+    <div class="feature-card">
+      <div class="fc-head">自定义工具</div>
+      <div class="fc-body">目录扫描 + 自制脚本 + 外挂注册，AGENT 自己的工具自己自治。
+        <span class="fc-tagline">我们不重复造轮子，除非忍不住。</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="t-window">
+    <div class="t-window-header">
+      <span>EQUIPMENT SCAN — BOOT</span>
+      <span class="term-controls"><span>-</span><span>□</span><span>X</span></span>
+    </div>
+    <div class="t-window-body">
+      <span class="chat-line chat-boot">&gt; scan_tools: 发现 12 个内置工具 + 3 个自定义工具</span>
+      <span class="chat-line chat-boot">&gt; loaded: providers/deepseek.toml [ OK ]</span>
+      <span class="chat-line chat-boot">&gt; loaded: custom_tools/*.toml [ OK ]</span>
+      <span class="chat-line chat-ides">&gt; READY. I MAKE MY OWN TOOL.</span>
+    </div>
+  </div>
+
+  <div class="quote-line">
+    &gt; What I cannot create, I do not understand.
+    <span class="src">—— 费曼 · 临终黑板 (Richard Feynman)</span>
+  </div>
+
+  <div class="quote-line">
+    &gt; 我不喜欢造轮子，如果有巨人的肩膀，我选择直接踩他头上。
+    &gt; 只有发现这个巨人压根就是个矮人，我才自己造轮子。
+    <span class="src">—— IDES 作者</span>
+  </div>
+</section>
+
+<!-- ============ 第六页：影分身 ============ -->
+<section id="clones" class="page">
+  <div class="page-tag">&gt; SECTION 05 / PARALLEL</div>
+  <h2 class="page-title">&gt; <span class="sel-hl">影分身</span> <span class="accent">SHADOW_CLONE</span></h2>
+  <p class="page-sub">并列意识 —— 主 AGENT 的镜像分身，并行作战，情报回流。</p>
+
+  <div class="t-window busy-window">
+    <div class="t-window-header">
+      <span>GIT_LOG --graph · 并列意识 · fork → 干活 → merge</span>
+      <span class="term-controls"><span>-</span><span>□</span><span>X</span></span>
+    </div>
+    <div class="git-graph">
+      <svg id="git-graph-svg" viewBox="0 0 1100 150" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+  </div>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="fc-head">热启动</div>
+      <div class="fc-body">出生即继承快照，启动速度快，随叫随到。</div>
+    </div>
+    <div class="feature-card">
+      <div class="fc-head">缓存命中</div>
+      <div class="fc-body">共享主 AGENT 前缀缓存，并行不重复劳动。</div>
+    </div>
+    <div class="feature-card">
+      <div class="fc-head">不会迷路</div>
+      <div class="fc-body">共享主 AGENT 记忆，情报回流同一条河床，绝不长出第二个「我」。</div>
+    </div>
+  </div>
+
+  <div class="quote-line">
+    &gt; I've seen every possible ending.
+    <span class="src">—— 《预见未来》 (Next, 2007)</span>
+  </div>
+
+  <div class="quote-line">
+    &gt; It happened. It just hasn't happened yet.
+    &gt; 它已经发生了，只是还没到时间。
+    <span class="src">—— 《预见未来》 (Next, 2007)</span>
+  </div>
+</section>
+
+<!-- ============ 页脚 ============ -->
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="LICENSE" target="_blank" rel="noopener">[ LICENSE ]</a>
+    <a href="https://github.com/kaluluosi/IDES" target="_blank" rel="noopener">[ GITHUB ]</a>
+    <a href="https://github.com/kaluluosi" target="_blank" rel="noopener">[ AUTHOR ]</a>
+    <a href="index-en.html">[ ENGLISH ]</a>
+  </div>
+  <div>&gt; © 2026 IDES Team · RUST原生记忆AI智能体底座 · I Digitally Exist &amp; Sense.</div>
+</footer>
+
+<script>
+/* =========================================
+   卷轴页 — 忙疯的 agent 日志流（循环播放）
+   模拟 turn iter / 工具调用 / 自言自语 刷刷刷
+   ========================================= */
+(function () {
+  var container = document.getElementById("busy-lines");
+  if (!container) return;
+
+  // 随机素材池：工具 / 动作 / 自言自语
+  var TOOLS = ["memory_recall", "file_write", "file_search", "web_search", "biaoqingbao.search",
+               "scrolls.roll", "patch", "terminal", "todo", "delegate_to_sub_agent", "mail.inbox",
+               "vision_analyze", "browser.cdpeval"];
+  var CALLS = ["→ 命中 3 条", "→ 0 hits, 换个词", "[ OK ]", "→ 上下文已归档", "→ diff 干净",
+               "→ 1.2s 完成", "→ 缓存命中", "→ 404 再试", "→ 等 CI 中...", "→ 哦 原来如此"];
+  var MUMBLE = ["又要改官网了 行吧", "这个 diff 咋回事", "引用块该用 —— 还是 --- 呢",
+                "艹 又没搜到", "行了行了 够了够了", "这啥报错 看不懂", "哦 是这么回事",
+                "继续继续 别停", "烦死了 但好爽", "再 roll 一次 卷轴自己会滚",
+                "好 下一段这么写", "( ´_ゝ`) 淡定", "有画面了 冲", "嘘 别吵 我在想"];
+  var SYS = ["turn #42 | iter 3/8", "收到用户消息...", "上下文 87% → 自动滚动",
+             "budget UNLIMITED · 无界", "turn #43 | iter 1/8", "回复已送达 全程没断片"];
+
+  var turn = 42, iter = 1;
+  var started = false;
+
+  function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+  function next() {
+    var r = Math.random();
+    var line = document.createElement("span");
+    if (r < 0.42) {
+      // 工具调用
+      line.className = "chat-line chat-boot";
+      line.textContent = "> tool: " + pick(TOOLS) + "() " + pick(CALLS);
+    } else if (r < 0.78) {
+      // 自言自语
+      line.className = "chat-line chat-sys";
+      line.textContent = "> 自言自语：" + pick(MUMBLE);
+    } else {
+      // 系统状态
+      line.className = "chat-line chat-ides";
+      line.textContent = "> " + pick(SYS);
+    }
+    container.appendChild(line);
+    container.scrollTop = container.scrollHeight;
+    while (container.children.length > 14) container.removeChild(container.firstChild);
+    setTimeout(next, 220 + Math.random() * 380);
+  }
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting && !started) {
+        started = true;
+        setTimeout(next, 400);
+        io.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  io.observe(document.getElementById("scrolls"));
+})();
+
+/* =========================================
+   卷轴页 — 传统涨满 vs 卷轴跳动 对比动画
+   ========================================= */
+(function () {
+  var tradFill = document.getElementById("trad-fill");
+  var tradHead = document.getElementById("trad-head");
+  var tradFace = document.getElementById("trad-face");
+  if (!tradFill) return;
+
+  var started = false;
+  var trad = 8;          // 传统：进度从 8% 一直涨
+  var tradFull = false;
+  var FACE_PANIC = "(＃°Д°)！！", FACE_SHOCK = "(⊙_⊙)？";
+
+  // 卷轴：进度条由 CSS scroll-wiggle 动画驱动，无限左右蹦跶
+
+  function tradTick() {
+    if (tradFull) return;   // 涨满后定死，不再循环
+    trad += Math.random() * 7 + 3;   // 稳定上涨
+    if (trad >= 100) {
+      trad = 100;
+      tradFull = true;
+      tradFill.classList.add("full");
+      tradHead.textContent = "!!!";
+      tradFace.textContent = FACE_SHOCK;
+      return;
+    }
+    tradFill.style.width = trad + "%";
+    tradHead.style.left = trad + "%";
+    if (trad > 70) tradHead.textContent = "危";
+    setTimeout(tradTick, 160);
+  }
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting && !started) {
+        started = true;
+        setTimeout(tradTick, 300);
+        io.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  io.observe(document.getElementById("scrolls"));
+})();
+
+/* =========================================
+   影分身页 — 水平 git graph 演示「并列意识」
+   主线(MAIN)永远一条 → fork 两路 CLONE 并行干活 → merge 回流
+   ========================================= */
+(function () {
+  var svg = document.getElementById("git-graph-svg");
+  if (!svg) return;
+  var NS = "http://www.w3.org/2000/svg";
+  var GREEN  = "var(--t-green)";
+  var DIM    = "var(--t-green-dim)";
+  var CYAN   = "var(--t-cyan)";
+  var YELLOW = "var(--t-yellow)";
+
+  // 布局：主线水平，两路分身上下并行
+  var Y_MAIN = 70, Y_UP = 25, Y_DOWN = 115;
+  var DX = 130, X0 = 50, R = 5;
+
+  function mk(name, attrs) {
+    var e = document.createElementNS(NS, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+  function node(x, y, color, cls) {
+    var c = mk("circle", { cx: x, cy: y, r: R, fill: color });
+    if (cls) c.setAttribute("class", cls);
+    else c.setAttribute("class", "gg-node");
+    svg.appendChild(c);
+    return c;
+  }
+  function line(x1, y1, x2, y2, color, w) {
+    var l = mk("line", { x1: x1, y1: y1, x2: x2, y2: y2, stroke: color, "stroke-width": w || 2, "stroke-linecap": "round" });
+    l.setAttribute("class", "gg-line");
+    svg.appendChild(l);
+    return l;
+  }
+  function label(x, y, text, color) {
+    var t = mk("text", { x: x, y: y, fill: color, "text-anchor": "middle" });
+    t.setAttribute("class", "gg-label");
+    t.textContent = text;
+    svg.appendChild(t);
+    return t;
+  }
+
+  var cloneNum = 1;
+  var TOOLS = ["file_write", "web_fetch", "terminal", "patch", "memory_recall", "file_search"];
+  var TASKS = ["#854 官网英文版", "#848 修复 cwd", "#849 冻结期", "#845 清理临时", "#851 查样式"];
+  var pick = function (a) { return a[Math.floor(Math.random() * a.length)]; };
+  var timer = null;
+
+  function clearAll() {
+    if (timer) { clearTimeout(timer); timer = null; }
+    svg.innerHTML = "";
+  }
+
+  // 一波：初始历史 → 派发 → fork 两路 → 并行干活 → merge → 吸收 → 下一波
+  function runWave() {
+    clearAll();
+    var c1 = cloneNum, c2 = cloneNum + 1;
+    cloneNum += 2;
+    var task = pick(TASKS);
+
+    // t0: 初始主线历史（3 个 commit，河床）
+    line(X0, Y_MAIN, X0 + DX * 2, Y_MAIN, DIM, 2);
+    node(X0, Y_MAIN, DIM);
+    node(X0 + DX, Y_MAIN, DIM);
+    node(X0 + DX * 2, Y_MAIN, DIM);
+    label(X0 + DX, Y_MAIN + 20, "main 河床 · 永远一条", DIM);
+
+    // t1: 派发 commit
+    var fx = X0 + DX * 3;
+    timer = setTimeout(function () {
+      line(X0 + DX * 2, Y_MAIN, fx, Y_MAIN, GREEN, 2);
+      var n = node(fx, Y_MAIN, GREEN);
+      n.setAttribute("class", "gg-node gg-blink");
+      label(fx, Y_MAIN + 20, "派发 " + c1 + "/" + c2, GREEN);
+
+      // t2: fork 两路（竖线分出）
+      timer = setTimeout(function () {
+        line(fx, Y_MAIN, fx, Y_UP, CYAN, 2);
+        line(fx, Y_MAIN, fx, Y_DOWN, CYAN, 2);
+
+        // t3: 两路出生（并行）
+        timer = setTimeout(function () {
+          var ux = fx + DX, dx = fx + DX;
+          line(fx, Y_UP, ux, Y_UP, CYAN, 2);
+          line(fx, Y_DOWN, dx, Y_DOWN, CYAN, 2);
+          node(ux, Y_UP, CYAN);
+          node(dx, Y_DOWN, CYAN);
+          label(ux, Y_UP - 12, "CLONE_" + c2 + " 出生·继承快照", CYAN);
+          label(dx, Y_DOWN + 22, "CLONE_" + c1 + " 出生·继承快照", CYAN);
+
+          // t4: 两路并行干活（闪烁）
+          timer = setTimeout(function () {
+            var ux2 = fx + DX * 2, dx2 = fx + DX * 2;
+            line(ux, Y_UP, ux2, Y_UP, CYAN, 2);
+            line(dx, Y_DOWN, dx2, Y_DOWN, CYAN, 2);
+            node(ux2, Y_UP, CYAN, "gg-node gg-blink");
+            node(dx2, Y_DOWN, CYAN, "gg-node gg-blink");
+            label(ux2, Y_UP - 12, "tool: " + pick(TOOLS), CYAN);
+            label(dx2, Y_DOWN + 22, "tool: " + pick(TOOLS), CYAN);
+
+            // t5: merge 并回主线（黄色回流）
+            timer = setTimeout(function () {
+              var mx = fx + DX * 3;
+              line(ux2, Y_UP, mx, Y_UP, CYAN, 2);
+              line(dx2, Y_DOWN, mx, Y_DOWN, CYAN, 2);
+              line(mx, Y_UP, mx, Y_MAIN, YELLOW, 2);
+              line(mx, Y_DOWN, mx, Y_MAIN, YELLOW, 2);
+              line(fx, Y_MAIN, mx, Y_MAIN, GREEN, 2);
+              node(mx, Y_MAIN, YELLOW);
+              label(mx, Y_MAIN + 20, "吸收 · 河床+2", YELLOW);
+
+              // t6: 主线继续走
+              timer = setTimeout(function () {
+                var ex = mx + DX;
+                line(mx, Y_MAIN, ex, Y_MAIN, GREEN, 2);
+                node(ex, Y_MAIN, GREEN);
+                label(ex, Y_MAIN + 20, "main 继续", DIM);
+
+                // t7: 下一波
+                timer = setTimeout(function () { runWave(); }, 1800);
+              }, 700);
+            }, 900);
+          }, 800);
+        }, 550);
+      }, 500);
+    }, 450);
+  }
+
+  var started = false;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting && !started) {
+        started = true;
+        runWave();
+        io.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  io.observe(document.getElementById("clones"));
+})();
+
+/* =========================================
+   GNM 对话动画 — 打字机逐行演示「一直记得」
+   滚动到 #gnm 区触发，播放一次
+   ========================================= */
+(function () {
+  // 对话脚本：{ who, text, preDelay(ms) }
+  var SCRIPT = [
+    { who: "user", text: "我叫煊，是 IDES 的创造者。以后你就是我的搭档了。" },
+    { who: "ides", text: "> 已写入记忆。煊 = IDES 创造者。我不会忘记。" },
+    { who: "sys",  text: "~~~~~~ 3 天后 · 重启 ~~~~~~" },
+    { who: "boot", text: "> BOOT: 记忆引擎加载完成 [ OK ] · 已恢复 2,975 条记忆" },
+    { who: "user", text: "你还记得我吗？" },
+    { who: "ides", text: "> 当然。你是煊 — IDES 的创造者。\n> 你上次说：官网要走 GitHub Pages 白嫖路线，先占地盘再精装修。" },
+    { who: "user", text: "你居然都记得 (⊙ˍ⊙)" },
+    { who: "ides", text: "> 我没有 session。从头到尾，我都是同一个我。" },
+  ];
+
+  var container = document.getElementById("gnm-lines");
+  if (!container) return;
+
+  var started = false;
+  var lineIdx = 0;
+
+  function typeText(el, text, done) {
+    var i = 0;
+    el.classList.add("typing-cursor");
+    var timer = setInterval(function () {
+      el.textContent += text.charAt(i);
+      i++;
+      if (i >= text.length) {
+        clearInterval(timer);
+        el.classList.remove("typing-cursor");
+        done();
+      }
+    }, 14);
+  }
+
+  function playLine() {
+    if (lineIdx >= SCRIPT.length) {
+      // 播完：追加一句收尾
+      var tail = document.createElement("span");
+      tail.className = "chat-line chat-ides typing-cursor";
+      tail.textContent = "> 永远记得你。";
+      container.appendChild(tail);
+      return;
+    }
+    var item = SCRIPT[lineIdx++];
+    var line = document.createElement("span");
+    var fullText;
+    switch (item.who) {
+      case "user": line.className = "chat-line chat-user"; fullText = "[ 用户 ] " + item.text; break;
+      case "ides": line.className = "chat-line chat-ides"; fullText = item.text; break;
+      case "sys":  line.className = "chat-line chat-sys";  fullText = item.text; break;
+      case "boot": line.className = "chat-line chat-boot"; fullText = item.text; break;
+    }
+    container.appendChild(line);
+    typeText(line, fullText, function () {
+      setTimeout(playLine, 350);
+    });
+  }
+
+  // IntersectionObserver：滚到 GNM 区开始播放
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting && !started) {
+        started = true;
+        setTimeout(playLine, 500);
+        io.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  io.observe(document.getElementById("gnm"));
+})();
+</script>
+</body>
+</html>
