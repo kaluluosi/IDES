@@ -1,0 +1,7 @@
+# Python / uv
+.venv/
+__pycache__/
+*.pyc
+
+# mkdocs 构建产物
+site/

@@ -1,0 +1,15 @@
+site_name: IDES
+site_description: rust native memory ai agent harness / RUST原生记忆AI智能体底座
+site_url: https://www.digitego.cn/
+
+# 首页 = 官网原样静态页（docs/index.html 直接复制到 site 根）
+# 后续文档页走 mkdocs 渲染（.md）
+
+theme:
+  name: mkdocs
+
+# 导航：后续有文档页再配
+# nav:
+
+extra_css: []
+extra_javascript: []
