@@ -3,13 +3,44 @@ site_description: rust native memory ai agent harness / RUST原生记忆AI智能
 site_url: https://www.digitego.cn/
 
 # 首页 = 官网原样静态页（docs/index.html 直接复制到 site 根）
-# 后续文档页走 mkdocs 渲染（.md）
+# 文档区 = mkdocs-material 渲染（docs/en、docs/zh 语言目录，i18n folder 结构）
+# material 语言切换器由 mkdocs-static-i18n reconfigure_material 自动配置（默认开）
 
 theme:
-  name: mkdocs
+  name: material
+  palette:
+    scheme: slate
+    primary: amber
+    accent: amber
+  font: false
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+  language: en
 
-# 导航：后续有文档页再配
-# nav:
+plugins:
+  - search
+  - i18n:
+      docs_structure: folder
+      reconfigure_material: true
+      fallback_to_default: true
+      languages:
+        - locale: en
+          name: English
+          default: true
+          build: true
+          site_name: IDES
+          site_description: RUST-native Memory AI Agent Harness
+        - locale: zh
+          name: 简体中文
+          build: true
+          site_name: IDES
+          site_description: RUST原生记忆AI智能体底座
 
-extra_css: []
-extra_javascript: []
+# 文档 nav（官网静态 index.html 不进 nav）
+nav:
+  - Quick Start: quickstart.md
