@@ -22,6 +22,11 @@ theme:
     - content.code.copy
   language: en
 
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
 plugins:
   - search
   - i18n:
@@ -44,3 +49,5 @@ plugins:
 # 文档 nav（官网静态 index.html 不进 nav）
 nav:
   - Quick Start: quickstart.md
+  - 使用 IDES: zh/using-ides.md
+  - GNM 记忆详解: zh/gnm.md
