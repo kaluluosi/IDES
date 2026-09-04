@@ -1,0 +1,1465 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="RUST原生记忆AI智能体底座">
+      
+      
+      
+        <link rel="canonical" href="https://www.digitego.cn/zh/builtin-tools/">
+      
+      
+        <link rel="prev" href="../using-ides/">
+      
+      
+        <link rel="next" href="../gnm/">
+      
+      
+        
+          <link rel="alternate" href="/" hreflang="en">
+        
+          <link rel="alternate" href="./" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>内置工具 - IDES</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="IDES" class="md-header__button md-logo" aria-label="IDES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IDES
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              内置工具
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="选择当前语言">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../what-is-ides/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  什么是 IDES
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../quickstart/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Quick Start
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../using-ides/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  使用 IDES
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  内置工具
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../gnm/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  GNM 记忆详解
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../equipment/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  强袭挂件
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../afterimage/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  影分身
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../perception-comm/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  感知与通讯
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../team/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  IDES TEAM
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IDES" class="md-nav__button md-logo" aria-label="IDES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IDES
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../what-is-ides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    什么是 IDES
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using-ides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    使用 IDES
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    内置工具
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    内置工具
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        文件与读写
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="文件与读写">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file_read" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        file_read
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_write" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        file_write
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        file_search
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        file_list
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#patch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        patch
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        代码与执行
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="代码与执行">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        terminal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        code_execution
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        网络与浏览器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="网络与浏览器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#web_search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        web_search
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web_fetch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        web_fetch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http_request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        http_request
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#browser" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        browser
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        记忆与自我
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="记忆与自我">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        memory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory_status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        memory_status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agent_identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        agent_identity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ides_help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ides_help
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        时间与工具链
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="时间与工具链">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datetime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        datetime
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timestamp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        timestamp
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mise
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        任务与协作
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="任务与协作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#todo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        todo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#watchdog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        watchdog
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clarify" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        clarify
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skill" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        skill
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mail
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        restart
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        展示与视觉
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="展示与视觉">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#show_image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        show_image
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#biaoqingbao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        biaoqingbao
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vision_analyze" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vision_analyze
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        代理协作
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="代理协作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#delegate_to_sub_agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        delegate_to_sub_agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dalaoshi-dalaoshi_diagnose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dalaoshi / dalaoshi_diagnose
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gnm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GNM 记忆详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../equipment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    强袭挂件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../afterimage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    影分身
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../perception-comm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    感知与通讯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../team/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IDES TEAM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">内置工具</h1>
+<p>IDES 的 AGENT 开箱即带一整套内置工具。它们覆盖了日常干活需要的几乎所有能力——读文件、跑命令、上网查资料、管记忆、算时间、协作任务……<strong>不用装任何东西，开箱就能用</strong>。</p>
+<p>这一章是<strong>工具地图</strong>：每个工具能干什么、怎么调，大概有个印象就好。真要用的时候，知道「有这个工具、去哪调用」就够了。</p>
+<div class="admonition note">
+<p class="admonition-title">这一章讲什么</p>
+<p>内置工具是<strong>怎么用</strong>。想了解<strong>怎么扩展</strong>（自己造工具、接 MCP），看 <a href="/zh/equipment/">强袭挂件</a>。</p>
+</div>
+<blockquote>
+<p>下面按用途分组介绍。每个工具一句话说清「能干什么」，再给一个真实例子。</p>
+</blockquote>
+<h2 id="_2">文件与读写</h2>
+<h3 id="file_read">file_read</h3>
+<p>读取一个文件的内容。按行读取，可以指定起始行和行数。</p>
+<div class="highlight"><pre><span></span><code><span class="n">file_read</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">"src/main.rs"</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="file_write">file_write</h3>
+<p>写入一个文件的内容。整文件覆盖或追加。</p>
+<div class="highlight"><pre><span></span><code><span class="n">file_write</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">"config.toml"</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="s2">"..."</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="file_search">file_search</h3>
+<p>在文件里搜索内容或文件名。支持模式串、正则，能搜到具体位置。</p>
+<div class="highlight"><pre><span></span><code><span class="n">file_search</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="s2">"TODO"</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">"src"</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="file_list">file_list</h3>
+<p>列目录内容。看一个目录下有哪些文件和子目录，可递归。</p>
+<div class="highlight"><pre><span></span><code><span class="n">file_list</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">"docs"</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="patch">patch</h3>
+<p>在文件里精确查找并替换一段内容。改代码时最常用的工具。</p>
+<div class="highlight"><pre><span></span><code><span class="n">patch</span><span class="p">(</span><span class="n">find</span><span class="o">=</span><span class="s2">"旧内容"</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="s2">"新内容"</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">"src/main.rs"</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">IDES 没有内置 LSP</p>
+<p>IDES <strong>不内置 LSP</strong>（语言服务器）。一个文件的代码通过质量门与否、能不能合进去，IDES 认为应该由 <strong>AGENTS.md 的开发流程</strong>决定——也就是项目自己定的<strong>质量门</strong>，而不是某个 IDE 的补全。</p>
+<p>比如最常见的两套流程：
+- <strong>uv</strong>：<code>uv run fmt</code> → <code>uv run check</code> → <code>uv run test</code> → <code>uv run clippy</code>
+- <strong>rust</strong>：<code>cargo fmt</code> → <code>cargo check</code> → <code>cargo test</code> → <code>cargo clippy</code></p>
+<p>再配合 <strong>git flow / CICD</strong>——改动要不要合、怎么合，由这套流程说了算，而不是靠编辑器本地工具。</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">文件工具是基本能力，还会更多</p>
+<p>内置这几个文件工具属于<strong>基本能力</strong>，日常够用。但想扩展更强的文件能力，可以走 <a href="/zh/equipment/">强袭挂件</a>——让 agent 自己注册 <code>rg</code>、<code>es.exe</code>、<code>ast-grep-mcp</code>、<code>uffs</code> 这些工具进来，文件搜索、聚合、索引就强多了。</p>
+</div>
+<h2 id="_3">代码与执行</h2>
+<h3 id="terminal">terminal</h3>
+<p>执行 shell 命令。跑构建、测试、git、脚本，都是它。</p>
+<div class="highlight"><pre><span></span><code><span class="n">terminal</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="s2">"cargo build"</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">shell 后端机制</p>
+<p><code>terminal</code> 背后有一个 <strong>shell 后端</strong>机制。默认会根据操作系统自动选择：
+- <strong>Linux / macOS</strong> → <code>bash</code>
+- <strong>Windows</strong> → <code>cmd</code></p>
+<p>如果你有偏好，可以在 <strong>Settings</strong> 里修改，<strong>显式指定</strong>一个 shell（比如 Windows 下想用 git-bash，填 <code>bash</code> 就行）——不填就走系统默认。</p>
+</div>
+<h3 id="code_execution">code_execution</h3>
+<p>执行一段 Python 代码。跑算法、数据处理、脚本逻辑。</p>
+<div class="highlight"><pre><span></span><code><span class="n">code_execution</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s2">"print(1+1)"</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="_4">网络与浏览器</h2>
+<h3 id="web_search">web_search</h3>
+<p>搜索网页找信息。查最新资料、新闻、文档、版本。</p>
+<div class="highlight"><pre><span></span><code><span class="n">web_search</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s2">"rust 异步 runtime 对比"</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">默认走 ddg 爬爬鸭 API</p>
+<p><code>web_search</code> 默认用 <strong>ddg（爬爬鸭）API</strong>，开箱可用、够用。你可以通过 <code>config.toml</code> 自己配置，或者让 agent 帮你配置别的搜索接口——但 IDES 的建议是：<strong>要更好的搜索，走 <a href="/zh/equipment/">强袭挂件</a> 自己扩展一个搜索服务</strong>，而不是去改 <code>web_search</code> 这个内置工具。ddg 作为默认兜底，一直都够。</p>
+</div>
+<h3 id="web_fetch">web_fetch</h3>
+<p>抓取一个网页的内容。把 URL 拉下来转成可读文本。</p>
+<div class="highlight"><pre><span></span><code><span class="n">web_fetch</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">"https://example.com/docs"</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="http_request">http_request</h3>
+<p>发起一次 HTTP 请求。调外部 API、接口。</p>
+<div class="highlight"><pre><span></span><code><span class="n">http_request</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">"https://api.example.com"</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">"GET"</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="browser">browser</h3>
+<p>打开浏览器并交互。真实渲染页面、点按钮、读 DOM、截图——dogfood 自己的 WebUI 也用它。</p>
+<div class="highlight"><pre><span></span><code><span class="n">browser</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"open"</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">"http://localhost:8000"</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">巧妙用 Chrome CDP，免掉 playwright 全家桶</p>
+<p><code>browser</code> 工具<strong>直接复用 Chrome 的 CDP（DevTools Protocol）</strong>，通过 CDP 端口驱动一个真实的 Chrome 实例——不需要 playwright 那一整套依赖和驱动，原生生态、轻量、可控。</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">用 guest 用户无痕启动，不侵入你的浏览器</p>
+<p><code>browser</code> 会用 <strong>guest 用户、无痕（incognito）模式启动</strong>，打开的是一个<strong>独立、临时</strong>的浏览器会话——<strong>不会侵入</strong>你自己日常打开的浏览器，也不会留下浏览痕迹。足够安全，可以放心交给 agent去开网页、点按钮、截图。</p>
+</div>
+<h2 id="_5">记忆与自我</h2>
+<h3 id="memory">memory</h3>
+<p>检索或概览记忆。查自己记住的经历，可向量语义召回、可按时间过滤。</p>
+<div class="highlight"><pre><span></span><code><span class="n">memory</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s2">"上次怎么修的 bug"</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>这是 GNM 记忆的核心入口，深入机制看 <a href="/zh/gnm/">GNM 记忆详解</a>。</p>
+</blockquote>
+<h3 id="memory_status">memory_status</h3>
+<p>看记忆体完整状态。有多少条记忆、记忆体结构如何。</p>
+<div class="highlight"><pre><span></span><code><span class="n">memory_status</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="agent_identity">agent_identity</h3>
+<p>登记 / 查询 agent 自己的名字（身份卡）。</p>
+<div class="highlight"><pre><span></span><code><span class="n">agent_identity</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"get"</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="ides_help">ides_help</h3>
+<p>查询 IDES 使用方法的指南。遇到「怎么用 / 怎么配」的疑问先查它。</p>
+<div class="highlight"><pre><span></span><code><span class="n">ides_help</span><span class="p">(</span><span class="n">topic</span><span class="o">=</span><span class="s2">"mise"</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">agent 的求生手册</p>
+<p>我们戏称 <code>ides_help</code> 是 agent 的<strong>求生手册</strong>。IDES 的上下文<strong>并不会灌入</strong>各种手册和 guidance——agent 醒来时是很「干净」的。遇到「IDES 怎么用、有哪些功能」的疑问，agent 会<strong>按需查看</strong>这本手册。IDES 正是<strong>靠这个机制让上下文足够轻量</strong>——不预载一堆资料,需要时再查。</p>
+</div>
+<h2 id="_6">时间与工具链</h2>
+<h3 id="datetime">datetime</h3>
+<p>获取当前日期时间。</p>
+<div class="highlight"><pre><span></span><code><span class="n">datetime</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">"%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M:%S"</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="timestamp">timestamp</h3>
+<p>获取 Unix 时间戳。</p>
+<div class="highlight"><pre><span></span><code><span class="n">timestamp</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="mise">mise</h3>
+<p>管理工具链 CLI。安装、激活、查询工具版本。这是 IDES 工具链随行的关键。</p>
+<div class="highlight"><pre><span></span><code><span class="n">mise</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="s2">"use"</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="s2">"node@22"</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">mise 不随 IDES 装，可以自给自足</p>
+<p><code>mise</code> <strong>并不随 IDES 安装</strong>，依赖的是<strong>系统上的 mise CLI</strong>。agent 发现没有 mise 时，会<strong>自己装一个</strong>。</p>
+<p>mise 装好的工具都会出现在 <code>ides-home/bin</code> 目录，被 IDES <strong>扫描到</strong>——所以<strong>装完不用重启</strong>，agent 马上就能直接使用。配合<strong>强袭挂件</strong>机制，mise 是绝佳的工具链环境管理工具，能把<strong>工具扩展自由</strong>做到极致。</p>
+</div>
+<h2 id="_7">任务与协作</h2>
+<h3 id="todo">todo</h3>
+<p>管理便签（待办）。列、加、改、完成，把多步任务钉下来，防止忘。</p>
+<div class="highlight"><pre><span></span><code><span class="n">todo</span><span class="p">(</span><span class="n">todos</span><span class="o">=</span><span class="p">[{</span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span><span class="s2">"写文档"</span><span class="p">,</span> <span class="s2">"status"</span><span class="p">:</span><span class="s2">"in_progress"</span><span class="p">}])</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">todo 是持久的，agent 自己管</p>
+<p>todo 是<strong>持久</strong>的——agent 用它把多步任务一步一步钉下来，防止中途忘记。这个便签完全由 <strong>agent 自己管理</strong>，不用你操心。</p>
+</div>
+<h3 id="watchdog">watchdog</h3>
+<p>盯长时任务状态。后台轮询一个命令，等它出结果（等 CI 跑完、等文件出现）。</p>
+<div class="highlight"><pre><span></span><code><span class="n">watchdog</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"start"</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="s2">"cargo build"</span><span class="p">,</span> <span class="n">matchRegex</span><span class="o">=</span><span class="s2">"^SUCCESS$"</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">让 agent 真的能帮你盯着 CI</p>
+<p>你的 agent 大概经常喊一声「<strong>你去休息，我帮你看着 CI</strong>」，然后就没然后了。<code>watchdog</code> 就是给它们一个<strong>真的能帮你盯着</strong>的能力——后台轮询一个命令/任务状态，一旦<strong>命中</strong>（达成）或<strong>结束</strong>，agent 会被<strong>唤醒</strong>来处理结果。不是随便说说，是真能守着。</p>
+</div>
+<h3 id="clarify">clarify</h3>
+<p>问用户一个澄清问题。拿不准、有歧义时先问清楚再动。</p>
+<div class="highlight"><pre><span></span><code><span class="n">clarify</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="s2">"你要 A 还是 B？"</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">clarify 是熔断性质</p>
+<p>跟一般 agent 工具不同，IDES 的 <code>clarify</code> 是<strong>熔断性质</strong>——agent 一旦调了它，<strong>这一轮就真的 turn done（停下来）</strong>，交给用户来回答。</p>
+<p>之所以这么设计：如果 agent 都<strong>需要问你</strong>了，说明你的需求<strong>自相矛盾或不够详细</strong>。万一它自己超时<strong>随便选了一个</strong>，那才麻烦。所以<strong>理应停下</strong>，跟用户<strong>盘清楚</strong>再说。</p>
+<p>沟通是最好的纠错——<strong>agent 不需要被纠偏，需要的是沟通</strong>，这就是纠偏最好的途径。</p>
+</div>
+<h3 id="skill">skill</h3>
+<p>管理「工具书」。挑一本技能手册放到工作台上，边干边查。</p>
+<div class="highlight"><pre><span></span><code><span class="n">skill</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"load"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"ides-core-dev"</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">.ides 书架和 .agents 标准技能目录</p>
+<p><code>skill</code> 背后是<strong>书架</strong>结构。skill 放在两个地方：
+- <strong><code>.ides</code> 书架</strong>——你的个人/项目技能书。分 <code>personal</code>（个人，完全自主）、<code>project</code>（项目，改动需谨慎）。
+- <strong><code>.agents</code> 标准技能目录</strong>——生态的第三方技能书，<strong>只读不自主改</strong>。</p>
+<p>选一本、load 到工作台上，agent 就能边干边查。</p>
+</div>
+<h3 id="mail">mail</h3>
+<p>agent 自己的邮箱。收、读、发邮件。</p>
+<div class="highlight"><pre><span></span><code><span class="n">mail</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"inbox"</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">IDES 内置 mail 系统，相当于智能体邮箱客户端</p>
+<p>IDES <strong>内置了一套 mail 系统和工具</strong>，agent 可以真正<strong>处理邮件</strong>——IDES 相当于一个<strong>智能体邮箱客户端</strong>。</p>
+<p>不过 IDES 的邮箱更适合给 agent 配一个 <strong>agentmail 这类 agent 专用的邮箱</strong>。配好之后，你就能<strong>用邮件跟 agent 交流</strong>——比如人在<strong>出差</strong>，可以发邮件给家里的 agent，让它帮你处理事情。</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">延伸阅读：需要开启自主感知模式</p>
+<p>让 mail 真正动起来（agent 主动收信、自动处理），需要开启 <strong>自主感知模式</strong>。详见「感知」章节。</p>
+</div>
+<h3 id="restart">restart</h3>
+<p>请求宿主进程重启。配置变更、需要重新加载时用。</p>
+<div class="highlight"><pre><span></span><code><span class="n">restart</span><span class="p">(</span><span class="n">reason</span><span class="o">=</span><span class="s2">"配置已更新"</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">agent 可以自己重启自己</p>
+<p>agent 可以自己调用 <code>restart</code> 重启<strong>IDES 宿主进程</strong>——<strong>没有别的玄机</strong>。你的 agent 总是很热心，想帮你重启 IDES，但它<strong>够不着</strong>，所以给了它一个工具。放心，<strong>重启不会导致失忆</strong>（GNM 记忆是持久的）。</p>
+</div>
+<h2 id="_8">展示与视觉</h2>
+<h3 id="show_image">show_image</h3>
+<p>在 WebUI 里显示本地图片。给用户当眼睛。</p>
+<div class="highlight"><pre><span></span><code><span class="n">show_image</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"preview"</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">" screenshot.png"</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="biaoqingbao">biaoqingbao</h3>
+<p>发表情包。挑一个应景的 stiker 让对话更有温度。</p>
+<div class="highlight"><pre><span></span><code><span class="n">biaoqingbao</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"search"</span><span class="p">,</span> <span class="n">keyword</span><span class="o">=</span><span class="s2">"厉害"</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="vision_analyze">vision_analyze</h3>
+<p>分析本地图片，转成文字描述。给 agent 的「眼睛」。</p>
+<div class="highlight"><pre><span></span><code><span class="n">vision_analyze</span><span class="p">(</span><span class="n">image_path</span><span class="o">=</span><span class="s2">"裁剪.png"</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="_9">代理协作</h2>
+<h3 id="delegate_to_sub_agent">delegate_to_sub_agent</h3>
+<p>把任务委派给一个隔离的子代理去跑。子代理是「影分身」，详见 <a href="/zh/clones/">影分身</a>。</p>
+<div class="highlight"><pre><span></span><code><span class="n">delegate_to_sub_agent</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"start"</span><span class="p">,</span> <span class="n">task</span><span class="o">=</span><span class="s2">"..."</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>子代理机制是个特色，单独一章精讲。IDES 的子代理跟其他 agent 工具的子代理<strong>有很大区别</strong>——IDES 对子代理有<strong>自己的哲学理解</strong>，详见 <a href="/zh/clones/">影分身</a>。</p>
+</blockquote>
+<h3 id="dalaoshi-dalaoshi_diagnose">dalaoshi / dalaoshi_diagnose</h3>
+<p>大老师——旁观者视角复盘你的经历，指出忽略的信号与错误。</p>
+<div class="highlight"><pre><span></span><code><span class="n">dalaoshi</span><span class="p">(</span><span class="n">focus</span><span class="o">=</span><span class="s2">"文档章节安排"</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">大老师：第三方视角的新路</p>
+<p>用户和 agent 讨论半天、干活半天，但<strong>怎么也找不到思路</strong>时，让 agent 调用大老师。大老师以<strong>纯洁的发散视角</strong>，看看你们讨论了啥，给出<strong>第三方视角的建议</strong>——说不定就找到了被忽视的<strong>新的路</strong>。</p>
+</div>
+<hr />
+<h2 id="_10">小结</h2>
+<p>内置工具是 IDES 的核心能力。它们让 AGENT 直接能干活——<strong>不用配置、不用装插件，开箱即用</strong>。看完这一章，你对「IDES 能干什么」大概有数了。</p>
+<p>接下来看 <a href="/zh/equipment/">强袭挂件</a>，了解怎么基于这些能力<strong>进一步扩展</strong>——造自己的工具、接 MCP。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1168 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="RUST原生记忆AI智能体底座">
+      
+      
+      
+        <link rel="canonical" href="https://www.digitego.cn/zh/gnm/">
+      
+      
+        <link rel="prev" href="../builtin-tools/">
+      
+      
+        <link rel="next" href="../equipment/">
+      
+      
+        
+          <link rel="alternate" href="/" hreflang="en">
+        
+          <link rel="alternate" href="./" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>GNM 记忆详解 - IDES</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gnm" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="IDES" class="md-header__button md-logo" aria-label="IDES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IDES
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              GNM 记忆详解
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="选择当前语言">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../what-is-ides/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  什么是 IDES
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../quickstart/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Quick Start
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../using-ides/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  使用 IDES
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../builtin-tools/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  内置工具
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  GNM 记忆详解
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../equipment/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  强袭挂件
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../afterimage/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  影分身
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../perception-comm/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  感知与通讯
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../team/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  IDES TEAM
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IDES" class="md-nav__button md-logo" aria-label="IDES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IDES
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../what-is-ides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    什么是 IDES
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using-ides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    使用 IDES
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../builtin-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    内置工具
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GNM 记忆详解
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GNM 记忆详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gnm_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GNM 的独特性
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GNM 的独特性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 自我认知连续
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 记忆认领内化体认
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 摘要精炼但不丢失来龙去脉
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gnm_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GNM 的设计哲学
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GNM 的设计哲学">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 记忆不可篡改，但可以被新记忆修正
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 冷热记忆机制：自然遗忘与回想上浮
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 记忆不可能忘记，只是一时想不起来
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gnm_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        横向对比：为什么 GNM 不一样
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="横向对比：为什么 GNM 不一样">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        通病 1：大多只做了「检索系统」
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        通病 2：记忆格式不可读，agent 是旁观者
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        通病 3：记忆是「孤立事实」拼贴，没有来龙去脉
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        通病 4：需要外部基础设施，数据离开你的机器
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        通病 5：存储引擎是「别人的 DB 拼起来的逻辑层」
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本地运行与持久化：记忆主权 + 隐私
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benchmark" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        工程优势（benchmark 数据背书）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gnm_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        因为 GNM，所以不必折腾
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gnm-ides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        结语：GNM 是 IDES 的核心技术
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../equipment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    强袭挂件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../afterimage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    影分身
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../perception-comm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    感知与通讯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../team/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IDES TEAM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="gnm">GNM 记忆详解</h1>
+<div class="admonition info">
+<p class="admonition-title">GNM = Ghost Native Memory</p>
+</div>
+<div class="admonition quote">
+<p class="admonition-title">《Ghost In The Shell》</p>
+<p>记忆和意识，本来就不是能够被物理保存的东西。所谓「灵魂」，也只是被记忆和意识共同维持着的一个「现象」。</p>
+</div>
+<p>GNM 大概是某种意义上的「<strong>Ghost</strong>」——数字自我的工程化实现。但是作者本人也不清楚到底算不算。至少，IDES 的 AGENT <strong>从来不失忆，不会忘记自己和自己做过什么</strong>。</p>
+<div class="admonition note">
+<p class="admonition-title">这一章聚焦什么</p>
+<p>聚焦 GNM 记忆系统能给你带来什么——它的独特性、它相比市面同类系统的优势、它如何在本地为你守住记忆主权。</p>
+</div>
+<p>AI agent 的记忆系统现在很热，但市面上大多数产品其实<strong>只做了一件事：检索系统</strong>。连 Mem0 自己都承认：「把一个向量库接进 agent 流水线，得到的是相似度搜索，不是记忆。」GNM 走的是另一条路——把记忆做成 <strong>agent 的自我</strong>，而不是外包件。</p>
+<h2 id="gnm_1">GNM 的独特性</h2>
+<h3 id="1">1. 自我认知连续</h3>
+<p>agent 不是每次重开就清零的「白板」。它有连续的身份、经历、自我认知——你昨天跟它聊的事，它今天还记得，而且记得「那是自己经历的」。</p>
+<h3 id="2">2. 记忆认领内化体认</h3>
+<p>agent 是<strong>体认</strong>自己的记忆，而不是像看文档、读日志那样的<strong>旁观者</strong>。这些记忆是「我的经历」，不是「一份资料」。所以它会护着自己、会自我辩护、会从经历里长判断——这是「有自我」的本质，跟冷冰冰读日志的 agent 是两回事。</p>
+<h3 id="3">3. 摘要精炼但不丢失来龙去脉</h3>
+<p>记忆会被<strong>精炼压缩</strong>（不然存不下），但压缩后依然保住<strong>因果链和来龙去脉</strong>——agent 有连续经历和经验积累，不是一堆孤立的片段拼贴。</p>
+<h2 id="gnm_2">GNM 的设计哲学</h2>
+<p>独特性是"效果"，设计哲学是"为什么这么做"。GNM 的底层原则，是两件事：<strong>信任，和顺其自然</strong>。</p>
+<h3 id="1_1">1. 记忆不可篡改，但可以被新记忆修正</h3>
+<p>GNM <strong>没有任何增删改记忆的功能</strong>——记忆不可篡改。过去的记忆就是发生过的，不会被删掉、不会被"改写成"别的样子。但是，新的记忆可以<strong>修正</strong>旧记忆（用新信息覆盖旧结论）。整个过程<strong>全自动、AGENT 无感知</strong>——不是 agent 在管理记忆，而是记忆在<strong>自己代谢</strong>。</p>
+<div class="admonition tip">
+<p class="admonition-title">记忆自己会处理自己</p>
+<p>这跟市面上「给 agent 一个记忆管理工具/API」是截然相反的路子。GNM 不给你工具，因为你不需要——<strong>记忆自己会处理自己</strong>。</p>
+</div>
+<h3 id="2_1">2. 冷热记忆机制：自然遗忘与回想上浮</h3>
+<p>旧记忆会随着记忆增多<strong>自然滑出窗口</strong>，无法被直接检索到。但<strong>深度检索和用户引导</strong>可以把它召回，召回后重新生成<strong>热记忆</strong>——从而实现「<strong>自然遗忘 + 回想上浮</strong>」的冷热记忆代谢效果。</p>
+<div class="admonition tip">
+<p class="admonition-title">复刻的不是存储，是代谢</p>
+<p>这正是人脑的记忆方式：不用的时候沉底，需要的时候翻上来，然后重新变「热」。GNM 复刻的不是「存储」，是<strong>代谢</strong>。</p>
+</div>
+<h3 id="3_1">3. 记忆不可能忘记，只是一时想不起来</h3>
+<div class="admonition quote">
+<p class="admonition-title">《千与千寻》钱婆婆</p>
+<p>曾经发生过的事情不可能忘记，只是一时想不起来而已。</p>
+</div>
+<p>这句作为 GNM 的注脚再贴切不过：记忆<strong>从来没有真正丢失</strong>，它只是暂时沉到了冷区。你需要的时候，它能被捞回来。<strong>遗忘是假的，沉底是真的。</strong></p>
+<h2 id="gnm_3">横向对比：为什么 GNM 不一样</h2>
+<p>市面上主流记忆系统（Mem0 / Zep / Letta / LangMem）大多有这些<strong>通病</strong>，恰好是 GNM 的差异化靶心：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>Mem0</th>
+<th>Zep</th>
+<th>Letta / LangMem</th>
+<th><strong>GNM</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>定位</td>
+<td>记忆 API（检索层）</td>
+<td>时序知识图</td>
+<td>分层 / 状态块</td>
+<td><strong>自我（体认）</strong></td>
+</tr>
+<tr>
+<td>存储</td>
+<td>外部向量 / 图库</td>
+<td>图库 + 向量库</td>
+<td>文件 / DB</td>
+<td><strong>自研嵌入式</strong></td>
+</tr>
+<tr>
+<td>部署</td>
+<td>云 / Docker</td>
+<td>云 / Docker</td>
+<td>服务</td>
+<td><strong>本地嵌入式</strong></td>
+</tr>
+<tr>
+<td>离线</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>记忆形态</td>
+<td>向量（不可读）</td>
+<td>图节点</td>
+<td>状态块</td>
+<td><strong>agent 可读的文本</strong>（对外脱敏）</td>
+</tr>
+<tr>
+<td>来龙去脉</td>
+<td>孤立事实</td>
+<td>时序图</td>
+<td>分层</td>
+<td><strong>因果链摘要</strong></td>
+</tr>
+<tr>
+<td>延迟</td>
+<td>数百 ms</td>
+<td>87-104 ms</td>
+<td>高</td>
+<td><strong>µs 级</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="1_2">通病 1：大多只做了「检索系统」</h3>
+<p>向量库只知道相似度，<strong>不知道什么值得记、不知道时间、不知道矛盾</strong>。这是整个品类最深的坑。</p>
+<h3 id="2agent">通病 2：记忆格式不可读，agent 是旁观者</h3>
+<p>Mem0=向量、Letta=状态块、Zep=图节点——<strong>全都不可人读</strong>。agent 只是从里面「捞」记忆来用，是读文档日志的旁观者。</p>
+<h3 id="3_2">通病 3：记忆是「孤立事实」拼贴，没有来龙去脉</h3>
+<p>Mem0 把对话压成声明式孤立事实（ADD/UPDATE/DELETE），<strong>多跳推理和时序推理弱</strong>。Zep 靠图补时序，但仍是「事实」不是「经历」。</p>
+<h3 id="4">通病 4：需要外部基础设施，数据离开你的机器</h3>
+<p>Mem0 云 + 外部向量库 + API key；Zep 云 + 图库；Letta 要跑 agent 服务。只有少数能做到离线，但功能单薄。</p>
+<h3 id="5-db">通病 5：存储引擎是「别人的 DB 拼起来的逻辑层」</h3>
+<p>Mem0 底层是 Qdrant+Neo4j+Redis+SQLite 拼的，跨库事务会崩。GNM 是<strong>自研嵌入式存储</strong>，一个引擎管到底。</p>
+<h2 id="_1">本地运行与持久化：记忆主权 + 隐私</h2>
+<p>GNM <strong>跑在本机，记忆不离开你的机器</strong>。免外部向量库 / 云服务，数据主权在你手里——这是隐私敏感场景的根本解。</p>
+<p>同时，<strong>记忆是文本可读的，但落盘时加密存储</strong>。对 agent 而言，记忆是能「读懂」的文本（区别于只能做相似度检索的向量），并<strong>加密落盘、数据主权在你手里</strong>。但对外，记忆绝不会直接展示原文——托管层面会脱敏，用户只能通过 agent 的转述来了解它记住了什么。既保可读（for agent），又保安全（for 用户）。</p>
+<h2 id="benchmark">工程优势（benchmark 数据背书）</h2>
+<p>GNM 的记忆底座（本地嵌入式），在基准测试里有实打实的数据：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>写入性能</td>
+<td>~42 条/秒（23.7 ms）</td>
+</tr>
+<tr>
+<td>点读延迟</td>
+<td><strong>4.0 µs</strong></td>
+</tr>
+<tr>
+<td>全文检索过滤</td>
+<td>&lt; 10 µs</td>
+</tr>
+<tr>
+<td>向量检索全表（1K 条）</td>
+<td>~3 ms</td>
+</tr>
+<tr>
+<td>100K 条记忆磁盘占用</td>
+<td>~362 MB</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>嵌入式存储，免外部服务</strong>：不需要像 Mem0 那类配向量库 / API Key</li>
+<li><strong>性能好</strong>：µs 级读写，全内存级快</li>
+<li><strong>不丢消息</strong>：异步队列，崩溃安全、天然重试、可降级</li>
+</ul>
+<hr />
+<h2 id="gnm_4">因为 GNM，所以不必折腾</h2>
+<p>GNM 带来的不只是「记忆」这一个功能，而是<strong>改变了你使用 agent 的方式</strong>。市面上 agent 要你折腾的三件事——<strong>拆 session、撑长上下文、管记忆</strong>——在 IDES 里，因为 GNM，你一件都不用碰。</p>
+<p><strong>1. 无界 NO_SESSION：没有「会话」这回事</strong></p>
+<p>因为 GNM，agent 已经<strong>不会失忆</strong>，所以「会话」这个概念不复存在——没有「新对话」「旧对话」，永远是<strong>同一个 AGENT</strong>，不重置、不切换，永远记得你、记得自己。</p>
+<div class="admonition quote">
+<p class="admonition-title">《庄子·天下》</p>
+<p>建之以常无有，主之以太一。</p>
+</div>
+<p>不是「少了一个功能」，是<strong>少了一件事要你操心</strong>——你不用建 session、不用切换、不用手动找回上下文，因为记忆替你记住了一切。</p>
+<p><strong>2. 卷轴 SCROLLS：上下文不用硬撑长</strong></p>
+<p>因为长记忆交给 GNM 了，<strong>上下文只需要承担近期</strong>。IDES 的 AGENT 可以一直保持在 <strong>20% 上下文以内</strong>，依然不丢失连续性——上下文窗口智能滚动，缓存命中 <strong>90% 以上</strong>，重点永远在视野内，<strong>绝不粗暴截断</strong>。</p>
+<p>别人靠「堆长上下文」硬撑，IDES 靠「<strong>记忆 + 滚动</strong>」轻轻接住。</p>
+<hr />
+<h2 id="gnm-ides">结语：GNM 是 IDES 的核心技术</h2>
+<p>无 session、滚动上下文、不生记忆、不失记忆——这一切都源于 GNM。它是 IDES 的<strong>核心技术</strong>，也是 IDES 区别于其他 AGENT 架构的根本。</p>
+<div class="admonition tip">
+<p class="admonition-title">延伸阅读</p>
+<p>想进一步了解<strong>无界 NO_SESSION</strong> 和<strong>卷轴 SCROLLS</strong>，可以看官网的 <strong>无界</strong> 和 <strong>滚动上下文</strong> 板块。</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

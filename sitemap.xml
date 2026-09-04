@@ -1,3 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>https://www.digitego.cn/quickstart/</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.digitego.cn/quickstart/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://www.digitego.cn/zh/quickstart/"/>
+    </url>
+    <url>
+        <loc>https://www.digitego.cn/what-is-ides/</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.digitego.cn/what-is-ides/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://www.digitego.cn/zh/what-is-ides/"/>
+    </url>
+    <url>
+        <loc>https://www.digitego.cn/zh/quickstart/</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://www.digitego.cn/zh/quickstart/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.digitego.cn/quickstart/"/>
+    </url>
+    <url>
+        <loc>https://www.digitego.cn/zh/what-is-ides/</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://www.digitego.cn/zh/what-is-ides/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.digitego.cn/what-is-ides/"/>
+    </url>
+    <url>
+        <loc>https://www.digitego.cn/zh/afterimage/</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://www.digitego.cn/zh/afterimage/"/>
+    </url>
+    <url>
+        <loc>https://www.digitego.cn/zh/builtin-tools/</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://www.digitego.cn/zh/builtin-tools/"/>
+    </url>
+    <url>
+        <loc>https://www.digitego.cn/zh/equipment/</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://www.digitego.cn/zh/equipment/"/>
+    </url>
+    <url>
+        <loc>https://www.digitego.cn/zh/gnm/</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://www.digitego.cn/zh/gnm/"/>
+    </url>
+    <url>
+        <loc>https://www.digitego.cn/zh/perception-comm/</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://www.digitego.cn/zh/perception-comm/"/>
+    </url>
+    <url>
+        <loc>https://www.digitego.cn/zh/team/</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://www.digitego.cn/zh/team/"/>
+    </url>
+    <url>
+        <loc>https://www.digitego.cn/zh/using-ides/</loc>
+        <lastmod>2026-09-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://www.digitego.cn/zh/using-ides/"/>
+    </url>
 </urlset>

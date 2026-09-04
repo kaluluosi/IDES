@@ -1,0 +1,1149 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="RUST原生记忆AI智能体底座">
+      
+      
+      
+        <link rel="canonical" href="https://www.digitego.cn/zh/perception-comm/">
+      
+      
+        <link rel="prev" href="../afterimage/">
+      
+      
+        <link rel="next" href="../team/">
+      
+      
+        
+          <link rel="alternate" href="/" hreflang="en">
+        
+          <link rel="alternate" href="./" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>感知与通讯 - IDES</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="IDES" class="md-header__button md-logo" aria-label="IDES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IDES
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              感知与通讯
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="选择当前语言">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../what-is-ides/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  什么是 IDES
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../quickstart/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Quick Start
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../using-ides/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  使用 IDES
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../builtin-tools/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  内置工具
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../gnm/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  GNM 记忆详解
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../equipment/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  强袭挂件
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../afterimage/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  影分身
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  感知与通讯
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../team/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  IDES TEAM
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IDES" class="md-nav__button md-logo" aria-label="IDES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IDES
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../what-is-ides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    什么是 IDES
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using-ides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    使用 IDES
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../builtin-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    内置工具
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gnm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GNM 记忆详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../equipment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    强袭挂件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../afterimage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    影分身
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    感知与通讯
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    感知与通讯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        自主感知模式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="自主感知模式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        开这个模式之前，agent 是「被动」的
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agent_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        开了之后，agent 会「主动」感知
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        怎么打开
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一句话
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        邮件系统
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="邮件系统">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        它是什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        配合自主感知模式用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        你会怎么用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        消息平台适配
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="消息平台适配">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clawbot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        微信 ClawBot
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="微信 ClawBot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agent_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一步：把配置发给 agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agent_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二步：agent 会让你扫码绑定
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agent_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第三步：让 agent 给微信发条消息
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        它能做什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        自定义平台适配
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="自定义平台适配">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        先看这个示范项目
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考它，接你的平台
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../team/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IDES TEAM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">感知与通讯</h1>
+<div class="admonition quote">
+<p class="admonition-title">主题句</p>
+<p><strong>IDES 不是「你喊它才动」，而是「它自己听见了，会主动找你」。</strong></p>
+</div>
+<p>前面讲的都是「你主动用 IDES」——开箱即用的精装房、内置工具、甚至影分身，都是你<strong>发起</strong>。但 IDES 还有一个更进阶的能力：<strong>感知与通讯</strong>。</p>
+<p>这一章讲 IDES 怎么「听见」外部世界、怎么主动回应你——不靠你每句话都来喊它。</p>
+<div class="admonition info">
+<p class="admonition-title">这一章讲什么</p>
+<ul>
+<li><strong>自主感知模式</strong>：让 agent 从「被动等你喊」变成「主动感知外界」的开关。</li>
+<li><strong>邮件系统</strong>：IDES 内置的 agent 邮箱，收、读、发<strong>真实邮件</strong>。</li>
+<li><strong>消息平台适配</strong>：让 agent 接入微信、Telegram 等<strong>即时通讯软件</strong>，在外面也能跟你对话。</li>
+</ul>
+</div>
+<h2 id="_2">自主感知模式</h2>
+<p>用了 IDES 一段时间，你可能注意到：它更像一个<strong>等你发话才动</strong>的助手。而「自主感知模式」，是让你能选一个更进阶的用法——<strong>让它自己听见外面的动静，主动来找你</strong>。</p>
+<h3 id="agent">开这个模式之前，agent 是「被动」的</h3>
+<p>不开的时候，agent 就是<strong>你问它才答</strong>。你想让它查邮件，得主动发消息让它查；你想让它看微信，也得主动告诉它。</p>
+<h3 id="agent_1">开了之后，agent 会「主动」感知</h3>
+<p>开了自主感知模式，agent 就像<strong>装上了一双耳朵</strong>——它会自己去看看外面有没有新鲜事：</p>
+<ul>
+<li><strong>有没有新邮件</strong>进了它的邮箱</li>
+<li><strong>有没有新消息</strong>从微信、Telegram 那些平台进来</li>
+</ul>
+<p>只要有，它就<strong>主动醒过来</strong>，替你处理。你不用每件事都亲自去喊它。</p>
+<div class="admonition warning">
+<p class="admonition-title">这个开关默认是关的</p>
+<ul>
+<li><strong>默认关闭</strong>：IDES 不会替你做主，默认不轮询外界。你要用，得<strong>自己开</strong>。</li>
+<li><strong>每次启动都要重开</strong>：它不记你上次的开关状态——这样保证外部消息<strong>不会悄悄</strong>闯进 agent 的收件箱，除非你主动打开这扇门。</li>
+</ul>
+</div>
+<h3 id="_3">怎么打开</h3>
+<p>在 IDES 界面<strong>打开这个开关</strong>，agent 就进入「自主模式」。开启后，界面上方会显示 <strong><code>【自主模式开启】</code></strong>——</p>
+<p><img alt="自主模式开启" src="../../perception-autonomous.png" /></p>
+<p>看到这个提示，就说明 agent 已经「听见」外界了，会主动去感知邮件、消息平台的新动静。</p>
+<h3 id="_4">一句话</h3>
+<p>自主感知模式，就是给 agent <strong>装上一双耳朵</strong>。开了它，下面讲的邮件、消息平台才真正<strong>活</strong>起来。不开，它们就只是「躺着」，等你发话才动。</p>
+<h2 id="_5">邮件系统</h2>
+<p>IDES 内置了一套邮件系统——agent 有自己<strong>真正的邮箱</strong>，能收、读、发<strong>真实邮件</strong>。IDES 相当于一个智能体邮箱客户端。</p>
+<p>调用方式见 <a href="/zh/builtin-tools/#mail">内置工具 · mail</a>。</p>
+<h3 id="_6">它是什么</h3>
+<p>普通人邮箱是<strong>自己</strong>的。IDES 这套邮箱是<strong>给 agent 的</strong>——它有自己的独立邮箱账户，能真正收发邮件，而不只是模拟一个收件箱。</p>
+<p>你能用它做这些事：</p>
+<table>
+<thead>
+<tr>
+<th>你能做什么</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>收件</strong></td>
+<td>agent 能看到自己邮箱里有什么新邮件</td>
+</tr>
+<tr>
+<td><strong>读</strong></td>
+<td>打开看全文</td>
+</tr>
+<tr>
+<td><strong>发</strong></td>
+<td>用 agent 的身份发出去</td>
+</tr>
+<tr>
+<td><strong>管理</strong></td>
+<td>删、标记已读等</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_7">配合自主感知模式用</h3>
+<p>邮件系统<strong>配合自主感知模式</strong>才最有用：</p>
+<ul>
+<li><strong>不开自主感知</strong>：agent 的邮箱是「躺着」的——你让它查，它才查。</li>
+<li><strong>开了自主感知</strong>：agent 会<strong>主动去看邮箱</strong>，有新邮件就<strong>自己醒过来处理</strong>。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># 让 agent 查看自己的邮箱，最近 10 封</span>
+<span class="n">mail</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"inbox"</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="_8">你会怎么用</h3>
+<p>配好 agent 的邮箱后，你就能<strong>用邮件跟 agent 交流</strong>。比如：</p>
+<blockquote>
+<p>你在出差，发一封邮件给家里的 agent：「帮我把周报整理好发我」。它收到后，会<strong>自己醒过来</strong>，打开你的邮件，处理掉，再用邮件回你。</p>
+</blockquote>
+<p>这也是为什么叫「感知与通讯」——<strong>邮件是 agent 感知外界、主动回应你的一条路</strong>。</p>
+<div class="admonition warning">
+<p class="admonition-title">安全性提醒</p>
+<p>你可以配置自己的<strong>私人邮箱</strong>，让 agent 帮你整理邮箱。但<strong>请慎重使用自主感知模式</strong>——因为不保证<strong>恶意邮件里夹带的指令</strong>会不会引导 agent 犯错。将来 IDES 会考虑增设一个开关，<strong>只让白名单里的邮箱账户</strong>能够自主感知。</p>
+</div>
+<h2 id="_9">消息平台适配</h2>
+<p>邮件的「通讯」是发邮件。而消息平台适配，是用<strong>即时通讯软件</strong>（微信、Telegram、元宝……）跟 agent 对话——你在外面，也能随时找到它。</p>
+<p>channel 的核心机制见 <a href="/zh/equipment/#channel">强袭挂件 · channel</a>。</p>
+<h3 id="clawbot">微信 ClawBot</h3>
+<p><strong>微信 ClawBot</strong> 能带你接入<strong>个人微信</strong>——用个人微信扫一下二维码，agent 就能在微信上跟你对话。你平时怎么用微信，就怎么跟你的 agent 聊。</p>
+<p>它是一个标准适配器（即插即用），源码开源在 GitHub：<a href="https://github.com/kaluluosi/ides_adapter_weixin">https://github.com/kaluluosi/ides_adapter_weixin</a></p>
+<p>接微信一共三步，<strong>你不需要自己配 MCP</strong>——发个信息给 agent，它会搞定。</p>
+<h4 id="agent_2">第一步：把配置发给 agent</h4>
+<p>把下面的配置（或上面的 GitHub 链接）<strong>发给你的 agent</strong>，它自己会注册这个适配器 MCP：</p>
+<div class="highlight"><pre><span></span><code><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"weixin"</span>
+<span class="n">transport</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"stdio"</span>
+<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"uvx"</span>
+<span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"ides-adapter-weixin"</span><span class="p">]</span>
+<span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">exclude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
+
+<span class="k">[env]</span>
+<span class="n">WEIXIN_ACCOUNT_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"default"</span>
+</code></pre></div>
+<p>你不用去动配置文件，agent 会自动帮你接好。</p>
+<div class="admonition tip">
+<p class="admonition-title">想接几条微信</p>
+<p><code>WEIXIN_ACCOUNT_ID</code> 给每条微信起个名字。默认 <code>default</code>，想接<strong>多条微信</strong>就改这个值，每条一个账户。</p>
+</div>
+<h4 id="agent_3">第二步：agent 会让你扫码绑定</h4>
+<p>注册好后，agent 会让你<strong>扫码绑定</strong>你的个人微信：</p>
+<div class="highlight"><pre><span></span><code>agent 发起接入
+ → 屏幕上出现二维码
+ → 你用个人微信扫一下
+ → 确认登录
+ → 你的微信跟 agent 绑上了
+</code></pre></div>
+<h4 id="agent_4">第三步：让 agent 给微信发条消息</h4>
+<p>绑定好之后，<strong>开启自主感知模式</strong>，让 agent 给微信 ClawBot 发一条消息——它就能在微信上跟你对话了。</p>
+<h4 id="_10">它能做什么</h4>
+<p>接上之后，你在微信里发消息，它就能收到、回复。就跟你在微信里加了个「AI 好友」，随时找它帮你办事。</p>
+<div class="admonition note">
+<p class="admonition-title">ClawBot 接的是个人微信</p>
+<p>ClawBot 接的是<strong>个人微信</strong>（扫二维码登录）。<strong>企业微信</strong>（WeCom）是另一回事——它的群机器人只能<strong>发</strong>，要双向得用「企业微信（应用）」。别混。</p>
+</div>
+<h3 id="_11">自定义平台适配</h3>
+<p>看到「接入个人微信」，你可能想：那我如果想把 agent 接到<strong>别的平台</strong>（Telegram、元宝、甚至自家 App）呢？</p>
+<p>答案很简单——<strong>IDES 不用每个平台都单独做一套</strong>。它用一套统一的接入方式（channel），你只需要<strong>照着给新平台写个连接器</strong>，就能把它接进来。</p>
+<h4 id="_12">先看这个示范项目</h4>
+<p>想把 agent 接到任何平台，最好的起点是看 <strong><code>ides_adapter_weixin</code></strong> 这个项目——它<strong>就是平台适配器的示范项目（范本）</strong>：</p>
+<p><a href="https://github.com/kaluluosi/ides_adapter_weixin">https://github.com/kaluluosi/ides_adapter_weixin</a></p>
+<p>这个微信适配器看着是「某个特定平台」，但它其实演示了一套<strong>通用的接入方式</strong>——你照着它的样子，就能接别的任意平台。</p>
+<h4 id="_13">参考它，接你的平台</h4>
+<ul>
+<li>IDES <strong>不用</strong>为微信专门做一套、为 Telegram 再做一套</li>
+<li><strong>任何平台</strong>都能用<strong>同一套接入方式</strong>接进来</li>
+<li><code>ides_adapter_weixin</code> 就是这套方式的<strong>一个现成范本</strong>——看它怎么接，你就知道怎么接别的平台</li>
+</ul>
+<p>核心就一句话：<strong>一个平台，写个连接器，就能接进 IDES。</strong> 微信是照这个范本做的，别的平台也是。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
