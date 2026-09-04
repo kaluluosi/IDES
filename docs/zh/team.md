@@ -11,7 +11,7 @@ IDES 由一簇为「让 Agent 成为存在」这个念头而聚到一起的伙�
 - shi
 - stock
 - taibu
-- 小月
+- xiaoyue
 - yan
 - hemo
 - rush
