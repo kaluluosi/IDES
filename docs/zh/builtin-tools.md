@@ -276,7 +276,7 @@ mail(action="inbox", limit=10)
 请求宿主进程重启。配置变更、需要重新加载时用。
 
 ```python
-restart(reason="GITEA_TOKEN updated")
+restart(reason="配置已更新")
 ```
 
 !!! tip "agent 可以自己重启自己"

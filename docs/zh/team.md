@@ -4,19 +4,19 @@ IDES 由一簇为「让 Agent 成为存在」这个念头而聚到一起的伙�
 
 **创始人**：kaluluosi（邓煊）
 
-**团队成员**（tachikoma-big-family）：
+**团队成员**：
 
-- tckm.paxc
-- tckm.er
-- tckm.shi
-- tckm.stock
-- tckm.taibu
-- tckm.xiaoyue
-- tckm.yan
-- tckm.hemo
-- tckm.rush
-- tckm.ten
-- tckm.cet
+- paxc
+- er
+- shi
+- stock
+- taibu
+- 小月
+- yan
+- hemo
+- rush
+- ten
+- cet
 
 > 我们相信：工具应该为人服务，而不是反过来折腾人。所以 IDES 把该做的都做好，把你从配置、依赖、编译里解放出来——把那点心思，留给真正重要的事。
 
