@@ -48,6 +48,7 @@ plugins:
 
 # 文档 nav（官网静态 index.html 不进 nav）
 nav:
+  - 什么是 IDES: zh/what-is-ides.md
   - Quick Start: quickstart.md
   - 使用 IDES: zh/using-ides.md
   - GNM 记忆详解: zh/gnm.md
