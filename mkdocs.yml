@@ -51,4 +51,5 @@ nav:
   - 什么是 IDES: zh/what-is-ides.md
   - Quick Start: quickstart.md
   - 使用 IDES: zh/using-ides.md
+  - 内置工具: zh/builtin-tools.md
   - GNM 记忆详解: zh/gnm.md
