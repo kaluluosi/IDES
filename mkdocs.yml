@@ -2,9 +2,10 @@ site_name: IDES
 site_description: rust native memory ai agent harness / RUST原生记忆AI智能体底座
 site_url: https://www.digitego.cn/
 
-# 首页 = 官网原样静态页（docs/index.html 直接复制到 site 根）
-# 文档区 = mkdocs-material 渲染（docs/en、docs/zh 语言目录，i18n folder 结构）
-# material 语言切换器由 mkdocs-static-i18n reconfigure_material 自动配置（默认开）
+# ========== 首页 = 官网原样静态页 ==========
+# docs/index.html + index-en.html + terminal.css/js 原样复制到 site 根，官网占 /
+# 文档区 = mkdocs-material 渲染，docs/zh + docs/en 各语言独立子目录
+# 语言切换器 = material 原生 extra.alternate
 
 theme:
   name: material
@@ -20,7 +21,7 @@ theme:
     - search.suggest
     - search.highlight
     - content.code.copy
-  language: en
+  language: zh
 
 markdown_extensions:
   - admonition
@@ -29,27 +30,12 @@ markdown_extensions:
 
 plugins:
   - search
-  - i18n:
-      docs_structure: folder
-      reconfigure_material: true
-      fallback_to_default: true
-      languages:
-        - locale: en
-          name: English
-          default: true
-          build: true
-          site_name: IDES
-          site_description: RUST-native Memory AI Agent Harness
-        - locale: zh
-          name: 简体中文
-          build: true
-          site_name: IDES
-          site_description: RUST原生记忆AI智能体底座
 
-# 文档 nav（官网静态 index.html 不进 nav）
+# 官网静态页（index.html）不进 nav，文档区按语言子目录真实路径
+# material 原生多语言：每语言一个子目录，nav 用带路径文件名
 nav:
-  - 什么是 IDES: zh/what-is-ides.md
-  - Quick Start: quickstart.md
+  - 什么是 IDES: zh/index.md
+  - 快速开始: zh/quickstart.md
   - 使用 IDES: zh/using-ides.md
   - 内置工具: zh/builtin-tools.md
   - GNM 记忆详解: zh/gnm.md
@@ -57,3 +43,13 @@ nav:
   - 影分身: zh/afterimage.md
   - 感知与通讯: zh/perception-comm.md
   - IDES TEAM: zh/team.md
+
+# 语言切换器（material 原生 alternate，右上角）
+extra:
+  alternate:
+    - name: English
+      link: /en/
+      lang: en
+    - name: 简体中文
+      link: /zh/
+      lang: zh
