@@ -2,10 +2,11 @@ site_name: IDES
 site_description: rust native memory ai agent harness / RUST原生记忆AI智能体底座
 site_url: https://kaluluosi.github.io/IDES/
 
-# ========== 首页 = 官网原样静态页 ==========
-# docs/index.html + index-en.html + terminal.css/js 原样复制到 site 根，官网占 /
-# 文档区 = mkdocs-material 渲染，docs/zh + docs/en 各语言独立子目录
-# 语言切换器 = material 原生 extra.alternate
+# ========== 架构 ==========
+# 官网静态页（docs/index.html + index-en.html + terminal.css/js）留在 docs 根，
+# mkdocs 会原样 copy 到 site 根，官网 index.html 夺舍占据 /。
+# 文档区 = i18n 插件渲染，docs/zh（default，落根 /）+ docs/en（落 /en/），
+# 每个语言有独立 nav。
 
 theme:
   name: material
@@ -30,26 +31,37 @@ markdown_extensions:
 
 plugins:
   - search
+  - i18n:
+      docs_structure: folder
+      languages:
+        - locale: zh
+          name: 简体中文
+          default: true
+          build: true
+        - locale: en
+          name: English
+          build: true
+          nav_translations:
+            什么是 IDES: What is IDES
+            快速开始: Quick Start
+            使用 IDES: Using IDES
+            内置工具: Built-in Tools
+            GNM 记忆详解: GNM Explained
+            强袭挂件: Assault Equipment
+            影分身: Afterimage
+            感知与通讯: Perception & Communication
+            IDES TEAM: IDES TEAM
 
-# 官网静态页（index.html）不进 nav，文档区按语言子目录真实路径
-# material 原生多语言：每语言一个子目录，nav 用带路径文件名
+# index.md 作为各语言 homepage（生成 / 被官网夺舍覆盖，不显示但满足 i18n homepage 机制）
+# what-is-ides.md 是官网 DOCS 跳转的"什么是 IDES"落地页（保留文件，官网跳这里，不进 nav 避免重复）
+# nav 用不带语言前缀路径，i18n 自动路由到对应语言文件夹
 nav:
-  - 什么是 IDES: zh/index.md
-  - 快速开始: zh/quickstart.md
-  - 使用 IDES: zh/using-ides.md
-  - 内置工具: zh/builtin-tools.md
-  - GNM 记忆详解: zh/gnm.md
-  - 强袭挂件: zh/equipment.md
-  - 影分身: zh/afterimage.md
-  - 感知与通讯: zh/perception-comm.md
-  - IDES TEAM: zh/team.md
-
-# 语言切换器（material 原生 alternate，右上角）
-extra:
-  alternate:
-    - name: English
-      link: https://kaluluosi.github.io/IDES/en/
-      lang: en
-    - name: 简体中文
-      link: https://kaluluosi.github.io/IDES/zh/
-      lang: zh
+  - 什么是 IDES: index.md
+  - 快速开始: quickstart.md
+  - 使用 IDES: using-ides.md
+  - 内置工具: builtin-tools.md
+  - GNM 记忆详解: gnm.md
+  - 强袭挂件: equipment.md
+  - 影分身: afterimage.md
+  - 感知与通讯: perception-comm.md
+  - IDES TEAM: team.md
