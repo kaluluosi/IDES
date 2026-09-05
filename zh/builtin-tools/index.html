@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://www.digitego.cn/zh/builtin-tools/">
+        <link rel="canonical" href="https://kaluluosi.github.io/IDES/zh/builtin-tools/">
       
       
         <link rel="prev" href="../using-ides/">
@@ -20,9 +20,9 @@
       
       
         
-          <link rel="alternate" href="/en/" hreflang="en">
+          <link rel="alternate" href="https://kaluluosi.github.io/IDES/en/" hreflang="en">
         
-          <link rel="alternate" href="/zh/" hreflang="zh">
+          <link rel="alternate" href="https://kaluluosi.github.io/IDES/zh/" hreflang="zh">
         
       
       
@@ -129,13 +129,13 @@
       <ul class="md-select__list">
         
           <li class="md-select__item">
-            <a href="/en/" hreflang="en" class="md-select__link">
+            <a href="https://kaluluosi.github.io/IDES/en/" hreflang="en" class="md-select__link">
               English
             </a>
           </li>
         
           <li class="md-select__item">
-            <a href="/zh/" hreflang="zh" class="md-select__link">
+            <a href="https://kaluluosi.github.io/IDES/zh/" hreflang="zh" class="md-select__link">
               简体中文
             </a>
           </li>
@@ -1189,7 +1189,7 @@
 <p>这一章是<strong>工具地图</strong>：每个工具能干什么、怎么调，大概有个印象就好。真要用的时候，知道「有这个工具、去哪调用」就够了。</p>
 <div class="admonition note">
 <p class="admonition-title">这一章讲什么</p>
-<p>内置工具是<strong>怎么用</strong>。想了解<strong>怎么扩展</strong>（自己造工具、接 MCP），看 <a href="/zh/equipment/">强袭挂件</a>。</p>
+<p>内置工具是<strong>怎么用</strong>。想了解<strong>怎么扩展</strong>（自己造工具、接 MCP），看 <a href="../equipment/">强袭挂件</a>。</p>
 </div>
 <blockquote>
 <p>下面按用途分组介绍。每个工具一句话说清「能干什么」，再给一个真实例子。</p>
@@ -1225,7 +1225,7 @@
 </div>
 <div class="admonition tip">
 <p class="admonition-title">文件工具是基本能力，还会更多</p>
-<p>内置这几个文件工具属于<strong>基本能力</strong>，日常够用。但想扩展更强的文件能力，可以走 <a href="/zh/equipment/">强袭挂件</a>——让 agent 自己注册 <code>rg</code>、<code>es.exe</code>、<code>ast-grep-mcp</code>、<code>uffs</code> 这些工具进来，文件搜索、聚合、索引就强多了。</p>
+<p>内置这几个文件工具属于<strong>基本能力</strong>，日常够用。但想扩展更强的文件能力，可以走 <a href="../equipment/">强袭挂件</a>——让 agent 自己注册 <code>rg</code>、<code>es.exe</code>、<code>ast-grep-mcp</code>、<code>uffs</code> 这些工具进来，文件搜索、聚合、索引就强多了。</p>
 </div>
 <h2 id="_3">代码与执行</h2>
 <h3 id="terminal">terminal</h3>
@@ -1250,7 +1250,7 @@
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">默认走 ddg 爬爬鸭 API</p>
-<p><code>web_search</code> 默认用 <strong>ddg（爬爬鸭）API</strong>，开箱可用、够用。你可以通过 <code>config.toml</code> 自己配置，或者让 agent 帮你配置别的搜索接口——但 IDES 的建议是：<strong>要更好的搜索，走 <a href="/zh/equipment/">强袭挂件</a> 自己扩展一个搜索服务</strong>，而不是去改 <code>web_search</code> 这个内置工具。ddg 作为默认兜底，一直都够。</p>
+<p><code>web_search</code> 默认用 <strong>ddg（爬爬鸭）API</strong>，开箱可用、够用。你可以通过 <code>config.toml</code> 自己配置，或者让 agent 帮你配置别的搜索接口——但 IDES 的建议是：<strong>要更好的搜索，走 <a href="../equipment/">强袭挂件</a> 自己扩展一个搜索服务</strong>，而不是去改 <code>web_search</code> 这个内置工具。ddg 作为默认兜底，一直都够。</p>
 </div>
 <h3 id="web_fetch">web_fetch</h3>
 <p>抓取一个网页的内容。把 URL 拉下来转成可读文本。</p>
@@ -1278,7 +1278,7 @@
 <div class="highlight"><pre><span></span><code><span class="n">memory</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s2">"上次怎么修的 bug"</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>这是 GNM 记忆的核心入口，深入机制看 <a href="/zh/gnm/">GNM 记忆详解</a>。</p>
+<p>这是 GNM 记忆的核心入口，深入机制看 <a href="../gnm/">GNM 记忆详解</a>。</p>
 </blockquote>
 <h3 id="memory_status">memory_status</h3>
 <p>看记忆体完整状态。有多少条记忆、记忆体结构如何。</p>
@@ -1388,11 +1388,11 @@
 </code></pre></div>
 <h2 id="_9">代理协作</h2>
 <h3 id="delegate_to_sub_agent">delegate_to_sub_agent</h3>
-<p>把任务委派给一个隔离的子代理去跑。子代理是「影分身」，详见 <a href="/zh/clones/">影分身</a>。</p>
+<p>把任务委派给一个隔离的子代理去跑。子代理是「影分身」，详见 <a href="../afterimage/">影分身</a>。</p>
 <div class="highlight"><pre><span></span><code><span class="n">delegate_to_sub_agent</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"start"</span><span class="p">,</span> <span class="n">task</span><span class="o">=</span><span class="s2">"..."</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
-<p>子代理机制是个特色，单独一章精讲。IDES 的子代理跟其他 agent 工具的子代理<strong>有很大区别</strong>——IDES 对子代理有<strong>自己的哲学理解</strong>，详见 <a href="/zh/clones/">影分身</a>。</p>
+<p>子代理机制是个特色，单独一章精讲。IDES 的子代理跟其他 agent 工具的子代理<strong>有很大区别</strong>——IDES 对子代理有<strong>自己的哲学理解</strong>，详见 <a href="../afterimage/">影分身</a>。</p>
 </blockquote>
 <h3 id="dalaoshi-dalaoshi_diagnose">dalaoshi / dalaoshi_diagnose</h3>
 <p>大老师——旁观者视角复盘你的经历，指出忽略的信号与错误。</p>
@@ -1405,7 +1405,7 @@
 <hr />
 <h2 id="_10">小结</h2>
 <p>内置工具是 IDES 的核心能力。它们让 AGENT 直接能干活——<strong>不用配置、不用装插件，开箱即用</strong>。看完这一章，你对「IDES 能干什么」大概有数了。</p>
-<p>接下来看 <a href="/zh/equipment/">强袭挂件</a>，了解怎么基于这些能力<strong>进一步扩展</strong>——造自己的工具、接 MCP。</p>
+<p>接下来看 <a href="../equipment/">强袭挂件</a>，了解怎么基于这些能力<strong>进一步扩展</strong>——造自己的工具、接 MCP。</p>
 
 
 

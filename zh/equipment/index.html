@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://www.digitego.cn/zh/equipment/">
+        <link rel="canonical" href="https://kaluluosi.github.io/IDES/zh/equipment/">
       
       
         <link rel="prev" href="../gnm/">
@@ -20,9 +20,9 @@
       
       
         
-          <link rel="alternate" href="/en/" hreflang="en">
+          <link rel="alternate" href="https://kaluluosi.github.io/IDES/en/" hreflang="en">
         
-          <link rel="alternate" href="/zh/" hreflang="zh">
+          <link rel="alternate" href="https://kaluluosi.github.io/IDES/zh/" hreflang="zh">
         
       
       
@@ -129,13 +129,13 @@
       <ul class="md-select__list">
         
           <li class="md-select__item">
-            <a href="/en/" hreflang="en" class="md-select__link">
+            <a href="https://kaluluosi.github.io/IDES/en/" hreflang="en" class="md-select__link">
               English
             </a>
           </li>
         
           <li class="md-select__item">
-            <a href="/zh/" hreflang="zh" class="md-select__link">
+            <a href="https://kaluluosi.github.io/IDES/zh/" hreflang="zh" class="md-select__link">
               简体中文
             </a>
           </li>
@@ -937,7 +937,7 @@
 <p>这一章回答两个问题：<strong>自定义工具是什么</strong>？<strong>MCP 是什么</strong>？两者怎么用、有什么区别？</p>
 <div class="admonition info">
 <p class="admonition-title">这一章讲什么</p>
-<p>内置工具是<strong>自带能力</strong>（怎么用），见 <a href="/zh/builtin-tools/">内置工具</a>。强袭挂件是<strong>扩展能力</strong>（怎么加装备）——让 IDES 不再局限于出厂自带的那些工具。</p>
+<p>内置工具是<strong>自带能力</strong>（怎么用），见 <a href="../builtin-tools/">内置工具</a>。强袭挂件是<strong>扩展能力</strong>（怎么加装备）——让 IDES 不再局限于出厂自带的那些工具。</p>
 </div>
 <h2 id="_2">本体与挂件</h2>
 <p>IDES 不重复造轮子。它不给 agent 堆一堆「官方插件」，而是给你一套<strong>外挂工具体系</strong>——让 agent 自己能<strong>造工具、接装备</strong>。</p>
@@ -954,7 +954,7 @@
 <li>这个数据目录是<strong>用户数据</strong>（shims / installs），<strong>不随 app 只读打包</strong>——是你自己的配置，跟着 IDES 走</li>
 </ul>
 <blockquote>
-<p>关于 mise 本身（不随 IDES 装、agent 自己装、配合挂件），见 <a href="/zh/builtin-tools/">内置工具</a>。</p>
+<p>关于 mise 本身（不随 IDES 装、agent 自己装、配合挂件），见 <a href="../builtin-tools/">内置工具</a>。</p>
 </blockquote>
 <h2 id="bin-bin">bin 扫描：放进 bin，立刻能用</h2>
 <p>bin 是 IDES 的「装备库」。所有放进 <code>bin/</code> 的二进制，都会被 IDES <strong>扫描并注入进程级 PATH</strong>——所以「往 bin 里扔个 exe，agent 立刻就能用」。</p>
@@ -1041,7 +1041,7 @@
 <p>这正是「强袭挂件」的精神：<strong>不是给你一堆官方插件，而是给你一套能自己造装备的体系</strong>。希望你能开发出神奇的用法。</p>
 <div class="admonition tip">
 <p class="admonition-title">延伸阅读</p>
-<p>想扩展更强的文件能力（搜索、处理），就是走这条 custom tool 的路子注册 <code>rg</code> / <code>es.exe</code> / <code>ast-grep-mcp</code> / <code>uffs</code> 进来。关于内置的文件工具，见 <a href="/zh/builtin-tools/">内置工具</a>。</p>
+<p>想扩展更强的文件能力（搜索、处理），就是走这条 custom tool 的路子注册 <code>rg</code> / <code>es.exe</code> / <code>ast-grep-mcp</code> / <code>uffs</code> 进来。关于内置的文件工具，见 <a href="../builtin-tools/">内置工具</a>。</p>
 </div>
 <h2 id="mcp-mcp-self-register">MCP 自治（mcp: self-register）</h2>
 <p>MCP（Model Context Protocol）是<strong>标准接口</strong>：跨生态的协议，接<strong>现成</strong>的 MCP server。IDES 内置了一套 MCP 接入层，给你一个 MCP server 的配置，agent 就能自己注册、连接、暴露工具。</p>

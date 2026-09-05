@@ -10,15 +10,15 @@
       
       
       
-        <link rel="canonical" href="https://www.digitego.cn/en/equipment/">
+        <link rel="canonical" href="https://kaluluosi.github.io/IDES/en/equipment/">
       
       
       
       
         
-          <link rel="alternate" href="/en/" hreflang="en">
+          <link rel="alternate" href="https://kaluluosi.github.io/IDES/en/" hreflang="en">
         
-          <link rel="alternate" href="/zh/" hreflang="zh">
+          <link rel="alternate" href="https://kaluluosi.github.io/IDES/zh/" hreflang="zh">
         
       
       
@@ -125,13 +125,13 @@
       <ul class="md-select__list">
         
           <li class="md-select__item">
-            <a href="/en/" hreflang="en" class="md-select__link">
+            <a href="https://kaluluosi.github.io/IDES/en/" hreflang="en" class="md-select__link">
               English
             </a>
           </li>
         
           <li class="md-select__item">
-            <a href="/zh/" hreflang="zh" class="md-select__link">
+            <a href="https://kaluluosi.github.io/IDES/zh/" hreflang="zh" class="md-select__link">
               简体中文
             </a>
           </li>
@@ -674,7 +674,7 @@
 <p>This chapter answers two questions: <strong>what is a custom tool</strong>? <strong>What is MCP</strong>? How do you use both, and what's the difference?</p>
 <div class="admonition info">
 <p class="admonition-title">What this chapter covers</p>
-<p>Built-in tools are <strong>out-of-the-box capabilities</strong> (how to use them) — see <a href="/en/builtin-tools/">Built-in Tools</a>. Equipment is about <strong>extension capabilities</strong> (how to add gear) — letting IDES go beyond the tools that ship out of the box.</p>
+<p>Built-in tools are <strong>out-of-the-box capabilities</strong> (how to use them) — see <a href="../builtin-tools/">Built-in Tools</a>. Equipment is about <strong>extension capabilities</strong> (how to add gear) — letting IDES go beyond the tools that ship out of the box.</p>
 </div>
 <h2 id="the-body-and-its-add-ons">The body and its add-ons</h2>
 <p>IDES doesn't reinvent the wheel. Instead of piling a bunch of「official plugins」onto the agent, it hands you an <strong>external add-on system</strong> — so the agent can <strong>build tools and attach gear</strong> on its own.</p>
@@ -691,7 +691,7 @@
 <li>This data directory is <strong>user data</strong> (shims / installs) — it's <strong>not bundled read-only with the app</strong>; it's your own config, and it follows IDES</li>
 </ul>
 <blockquote>
-<p>For mise itself (not installed by IDES, installed by the agent, combined with add-ons), see <a href="/en/builtin-tools/">Built-in Tools</a>.</p>
+<p>For mise itself (not installed by IDES, installed by the agent, combined with add-ons), see <a href="../builtin-tools/">Built-in Tools</a>.</p>
 </blockquote>
 <h2 id="bin-scanning-drop-it-in-bin-use-it-instantly">bin scanning: drop it in bin, use it instantly</h2>
 <p><code>bin</code> is IDES's「equipment depot」. Every binary placed into <code>bin/</code> is <strong>scanned and injected into the process-level PATH</strong> — so「drop an exe into bin, and the agent can use it right away」.</p>
@@ -778,7 +778,7 @@
 <p>That's the spirit of「Equipment」: <strong>not handing you a stack of official plugins, but giving you a system to build your own gear</strong>. Hope you come up with some amazing uses.</p>
 <div class="admonition tip">
 <p class="admonition-title">Further reading</p>
-<p>Want more powerful file handling (search, process)? That's the custom-tool route — register <code>rg</code> / <code>es.exe</code> / <code>ast-grep-mcp</code> / <code>uffs</code> in. For the built-in file tools, see <a href="/en/builtin-tools/">Built-in Tools</a>.</p>
+<p>Want more powerful file handling (search, process)? That's the custom-tool route — register <code>rg</code> / <code>es.exe</code> / <code>ast-grep-mcp</code> / <code>uffs</code> in. For the built-in file tools, see <a href="../builtin-tools/">Built-in Tools</a>.</p>
 </div>
 <h2 id="mcp-autonomy-mcp-self-register">MCP autonomy (mcp: self-register)</h2>
 <p>MCP (Model Context Protocol) is a <strong>standard interface</strong>: a cross-ecosystem protocol for connecting <strong>existing</strong> MCP servers. IDES has a built-in MCP layer — give it an MCP server config, and the agent can register, connect to, and expose tools on its own.</p>
