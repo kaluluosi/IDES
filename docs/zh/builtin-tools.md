@@ -5,7 +5,7 @@ IDES 的 AGENT 开箱即带一整套内置工具。它们覆盖了日常干活�
 这一章是**工具地图**：每个工具能干什么、怎么调，大概有个印象就好。真要用的时候，知道「有这个工具、去哪调用」就够了。
 
 !!! note "这一章讲什么"
-    内置工具是**怎么用**。想了解**怎么扩展**（自己造工具、接 MCP），看 [强袭挂件](/zh/equipment/)。
+    内置工具是**怎么用**。想了解**怎么扩展**（自己造工具、接 MCP），看 [强袭挂件](../equipment/)。
 
 > 下面按用途分组介绍。每个工具一句话说清「能干什么」，再给一个真实例子。
 
@@ -61,7 +61,7 @@ patch(find="旧内容", replace="新内容", path="src/main.rs")
     再配合 **git flow / CICD**——改动要不要合、怎么合，由这套流程说了算，而不是靠编辑器本地工具。
 
 !!! tip "文件工具是基本能力，还会更多"
-    内置这几个文件工具属于**基本能力**，日常够用。但想扩展更强的文件能力，可以走 [强袭挂件](/zh/equipment/)——让 agent 自己注册 `rg`、`es.exe`、`ast-grep-mcp`、`uffs` 这些工具进来，文件搜索、聚合、索引就强多了。
+    内置这几个文件工具属于**基本能力**，日常够用。但想扩展更强的文件能力，可以走 [强袭挂件](../equipment/)——让 agent 自己注册 `rg`、`es.exe`、`ast-grep-mcp`、`uffs` 这些工具进来，文件搜索、聚合、索引就强多了。
 
 ## 代码与执行
 
@@ -99,7 +99,7 @@ web_search(query="rust 异步 runtime 对比")
 ```
 
 !!! tip "默认走 ddg 爬爬鸭 API"
-    `web_search` 默认用 **ddg（爬爬鸭）API**，开箱可用、够用。你可以通过 `config.toml` 自己配置，或者让 agent 帮你配置别的搜索接口——但 IDES 的建议是：**要更好的搜索，走 [强袭挂件](/zh/equipment/) 自己扩展一个搜索服务**，而不是去改 `web_search` 这个内置工具。ddg 作为默认兜底，一直都够。
+    `web_search` 默认用 **ddg（爬爬鸭）API**，开箱可用、够用。你可以通过 `config.toml` 自己配置，或者让 agent 帮你配置别的搜索接口——但 IDES 的建议是：**要更好的搜索，走 [强袭挂件](../equipment/) 自己扩展一个搜索服务**，而不是去改 `web_search` 这个内置工具。ddg 作为默认兜底，一直都够。
 
 ### web_fetch
 
@@ -141,7 +141,7 @@ browser(action="open", target="http://localhost:8000")
 memory(query="上次怎么修的 bug")
 ```
 
-> 这是 GNM 记忆的核心入口，深入机制看 [GNM 记忆详解](/zh/gnm/)。
+> 这是 GNM 记忆的核心入口，深入机制看 [GNM 记忆详解](../gnm/)。
 
 ### memory_status
 
@@ -312,13 +312,13 @@ vision_analyze(image_path="裁剪.png")
 
 ### delegate_to_sub_agent
 
-把任务委派给一个隔离的子代理去跑。子代理是「影分身」，详见 [影分身](/zh/clones/)。
+把任务委派给一个隔离的子代理去跑。子代理是「影分身」，详见 [影分身](../afterimage/)。
 
 ```python
 delegate_to_sub_agent(action="start", task="...")
 ```
 
-> 子代理机制是个特色，单独一章精讲。IDES 的子代理跟其他 agent 工具的子代理**有很大区别**——IDES 对子代理有**自己的哲学理解**，详见 [影分身](/zh/clones/)。
+> 子代理机制是个特色，单独一章精讲。IDES 的子代理跟其他 agent 工具的子代理**有很大区别**——IDES 对子代理有**自己的哲学理解**，详见 [影分身](../afterimage/)。
 
 ### dalaoshi / dalaoshi_diagnose
 
@@ -337,4 +337,4 @@ dalaoshi(focus="文档章节安排")
 
 内置工具是 IDES 的核心能力。它们让 AGENT 直接能干活——**不用配置、不用装插件，开箱即用**。看完这一章，你对「IDES 能干什么」大概有数了。
 
-接下来看 [强袭挂件](/zh/equipment/)，了解怎么基于这些能力**进一步扩展**——造自己的工具、接 MCP。
+接下来看 [强袭挂件](../equipment/)，了解怎么基于这些能力**进一步扩展**——造自己的工具、接 MCP。

@@ -49,7 +49,7 @@ Autonomous perception mode is about giving the agent **a pair of ears**. With it
 
 IDES ships with an integrated mail system — the agent has its **own real mailbox** and can receive, read, and send **real emails**. IDES acts as an agent mail client.
 
-See [Built-in tools · mail](/en/builtin-tools/#mail) for how to call it.
+See [Built-in tools · mail](../builtin-tools/#mail) for how to call it.
 
 ### What it is
 
@@ -91,7 +91,7 @@ This is also why it's called "Perception & Communication" — **email is one pat
 
 Email "communication" means sending email. Message platform adapters, on the other hand, let you talk to the agent through **instant messaging apps** (WeChat, Telegram, Yuanbao... ) — so even when you're away, you can reach it anytime.
 
-See [Equipment · channel](/en/equipment/#channel) for the core mechanism behind channels.
+See [Equipment · channel](../equipment/#channel) for the core mechanism behind channels.
 
 ### WeChat ClawBot
 

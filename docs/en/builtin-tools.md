@@ -5,7 +5,7 @@ IDES's AGENT ships with a full set of built-in tools out of the box. They cover 
 This chapter is a **tool map**: a rough sense of what each tool does and how to call it. When you actually need one, all you have to know is "it exists and where to call it."
 
 !!! note "What this chapter covers"
-    Built-in tools are **how to use** them. To learn about **extending** them (building your own tools, connecting MCP), see [Equipment](/en/equipment/).
+    Built-in tools are **how to use** them. To learn about **extending** them (building your own tools, connecting MCP), see [Equipment](../equipment/).
 
 > The tools below are grouped by purpose. Each tool gets a one-line description of what it can do, plus a real example.
 
@@ -61,7 +61,7 @@ patch(find="old content", replace="new content", path="src/main.rs")
     Combine that with a **git flow / CICD** — whether a change should be merged, and how, is decided by that workflow, not by local editor tools.
 
 !!! tip "The file tools are basic capabilities, and there's more"
-    These built-in file tools are **basic capabilities** — enough for everyday use. But if you want more powerful file handling, you can go the [Equipment](/en/equipment/) route — let the agent register tools like `rg`, `es.exe`, `ast-grep-mcp`, and `uffs` itself, and your file search, aggregation, and indexing get much stronger.
+    These built-in file tools are **basic capabilities** — enough for everyday use. But if you want more powerful file handling, you can go the [Equipment](../equipment/) route — let the agent register tools like `rg`, `es.exe`, `ast-grep-mcp`, and `uffs` itself, and your file search, aggregation, and indexing get much stronger.
 
 ## Code & Execution
 
@@ -99,7 +99,7 @@ web_search(query="rust async runtime comparison")
 ```
 
 !!! tip "Defaults to the ddg search API"
-    `web_search` uses the **ddg (duckduckgo) API** by default — usable out of the box, good enough for most cases. You can configure it yourself via `config.toml`, or let the agent configure a different search interface for you — but IDES's advice is: **for better search, extend your own search service via [Equipment](/en/equipment/)**, rather than modifying the built-in `web_search`. ddg as the default fallback has always been enough.
+    `web_search` uses the **ddg (duckduckgo) API** by default — usable out of the box, good enough for most cases. You can configure it yourself via `config.toml`, or let the agent configure a different search interface for you — but IDES's advice is: **for better search, extend your own search service via [Equipment](../equipment/)**, rather than modifying the built-in `web_search`. ddg as the default fallback has always been enough.
 
 ### web_fetch
 
@@ -141,7 +141,7 @@ Retrieves or overviews memory. Look up what you've experienced; supports vector 
 memory(query="how did I fix that bug last time")
 ```
 
-> This is the main entry point to GNM memory. For the deeper mechanism, see [GNM Memory Guide](/en/gnm/).
+> This is the main entry point to GNM memory. For the deeper mechanism, see [GNM Memory Guide](../gnm/).
 
 ### memory_status
 
@@ -312,13 +312,13 @@ vision_analyze(image_path="crop.png")
 
 ### delegate_to_sub_agent
 
-Delegates a task to an isolated sub-agent to run. The sub-agent is an "afterimage" — see [Afterimage](/en/afterimage/).
+Delegates a task to an isolated sub-agent to run. The sub-agent is an "afterimage" — see [Afterimage](../afterimage/).
 
 ```python
 delegate_to_sub_agent(action="start", task="...")
 ```
 
-> The sub-agent mechanism is a highlight, and gets a chapter of its own. IDES's sub-agents are **very different** from the sub-agents of other agent tools — IDES has its **own philosophical take** on sub-agents. See [Afterimage](/en/afterimage/).
+> The sub-agent mechanism is a highlight, and gets a chapter of its own. IDES's sub-agents are **very different** from the sub-agents of other agent tools — IDES has its **own philosophical take** on sub-agents. See [Afterimage](../afterimage/).
 
 ### dalaoshi / dalaoshi_diagnose
 
@@ -337,4 +337,4 @@ dalaoshi(focus="document chapter arrangement")
 
 Built-in tools are IDES's core capability. They let the AGENT get to work directly — **no configuration, no plugins to install, ready out of the box.** After reading this chapter, you should have a rough sense of "what IDES can do."
 
-Next, check out [Equipment](/en/equipment/) to learn how to **extend further** on top of these capabilities — building your own tools and connecting MCP.
+Next, check out [Equipment](../equipment/) to learn how to **extend further** on top of these capabilities — building your own tools and connecting MCP.

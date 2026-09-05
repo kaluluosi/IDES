@@ -1,6 +1,6 @@
 site_name: IDES
 site_description: rust native memory ai agent harness / RUST原生记忆AI智能体底座
-site_url: https://www.digitego.cn/
+site_url: https://kaluluosi.github.io/IDES/
 
 # ========== 首页 = 官网原样静态页 ==========
 # docs/index.html + index-en.html + terminal.css/js 原样复制到 site 根，官网占 /
@@ -48,8 +48,8 @@ nav:
 extra:
   alternate:
     - name: English
-      link: /en/
+      link: https://kaluluosi.github.io/IDES/en/
       lang: en
     - name: 简体中文
-      link: /zh/
+      link: https://kaluluosi.github.io/IDES/zh/
       lang: zh

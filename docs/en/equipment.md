@@ -8,7 +8,7 @@ IDES's AGENT is the「fighter jet body」itself, but its capabilities aren't fix
 This chapter answers two questions: **what is a custom tool**? **What is MCP**? How do you use both, and what's the difference?
 
 !!! info "What this chapter covers"
-    Built-in tools are **out-of-the-box capabilities** (how to use them) — see [Built-in Tools](/en/builtin-tools/). Equipment is about **extension capabilities** (how to add gear) — letting IDES go beyond the tools that ship out of the box.
+    Built-in tools are **out-of-the-box capabilities** (how to use them) — see [Built-in Tools](../builtin-tools/). Equipment is about **extension capabilities** (how to add gear) — letting IDES go beyond the tools that ship out of the box.
 
 ## The body and its add-ons
 
@@ -32,7 +32,7 @@ The core of all this is **mise**. IDES installs mise into the bin directory:
 - The tools mise installs land in **`MISE_DATA_DIR`** (default `<IDES>/bin/mise-data/`)
 - This data directory is **user data** (shims / installs) — it's **not bundled read-only with the app**; it's your own config, and it follows IDES
 
-> For mise itself (not installed by IDES, installed by the agent, combined with add-ons), see [Built-in Tools](/en/builtin-tools/).
+> For mise itself (not installed by IDES, installed by the agent, combined with add-ons), see [Built-in Tools](../builtin-tools/).
 
 ## bin scanning: drop it in bin, use it instantly
 
@@ -135,7 +135,7 @@ So — **what it can do depends on what you and the agent can imagine using it f
 That's the spirit of「Equipment」: **not handing you a stack of official plugins, but giving you a system to build your own gear**. Hope you come up with some amazing uses.
 
 !!! tip "Further reading"
-    Want more powerful file handling (search, process)? That's the custom-tool route — register `rg` / `es.exe` / `ast-grep-mcp` / `uffs` in. For the built-in file tools, see [Built-in Tools](/en/builtin-tools/).
+    Want more powerful file handling (search, process)? That's the custom-tool route — register `rg` / `es.exe` / `ast-grep-mcp` / `uffs` in. For the built-in file tools, see [Built-in Tools](../builtin-tools/).
 
 ## MCP autonomy (mcp: self-register)
 

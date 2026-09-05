@@ -49,7 +49,7 @@
 
 IDES 内置了一套邮件系统——agent 有自己**真正的邮箱**，能收、读、发**真实邮件**。IDES 相当于一个智能体邮箱客户端。
 
-调用方式见 [内置工具 · mail](/zh/builtin-tools/#mail)。
+调用方式见 [内置工具 · mail](../builtin-tools/#mail)。
 
 ### 它是什么
 
@@ -91,7 +91,7 @@ mail(action="inbox", limit=10)
 
 邮件的「通讯」是发邮件。而消息平台适配，是用**即时通讯软件**（微信、Telegram、元宝……）跟 agent 对话——你在外面，也能随时找到它。
 
-channel 的核心机制见 [强袭挂件 · channel](/zh/equipment/#channel)。
+channel 的核心机制见 [强袭挂件 · channel](../equipment/#channel)。
 
 ### 微信 ClawBot
 
