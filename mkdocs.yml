@@ -1,6 +1,9 @@
 site_name: IDES
 site_description: rust native memory ai agent harness / RUST原生记忆AI智能体底座
-site_url: https://kaluluosi.github.io/IDES/
+# site_url 支持环境变量注入：部署时可通过 SITE_URL 覆盖
+# 默认值 = GitHub Pages 海外站（子路径 /IDES/）
+# 部署火山国内官网时设 SITE_URL=https://digitego.cn/ 即可
+site_url: !ENV [SITE_URL, 'https://kaluluosi.github.io/IDES/']
 
 # ========== 架构 ==========
 # 官网静态页（docs/index.html + index-en.html + terminal.css/js）留在 docs 根，
@@ -10,6 +13,7 @@ site_url: https://kaluluosi.github.io/IDES/
 
 theme:
   name: material
+  custom_dir: overrides
   palette:
     scheme: slate
     primary: amber
@@ -28,6 +32,15 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+
+# ========== 额外配置 ==========
+# footer 备案号槽位（环境变量注入，区分部署环境）：
+#   - GitHub Pages 海外站：不设 ICP_BEIAN → footer 无备案号（海外不需要）
+#   - 火山国内官网：设 ICP_BEIAN=粤ICP备2026129410号 → footer 显示备案号 + 工信部链接
+# beian_link 默认指向工信部备案管理系统
+extra:
+  beian: !ENV [ICP_BEIAN, '']
+  beian_link: !ENV [ICP_BEIAN_LINK, 'https://beian.miit.gov.cn']
 
 plugins:
   - search
