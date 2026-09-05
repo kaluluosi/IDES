@@ -1,0 +1,1041 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="rust native memory ai agent harness / RUST原生记忆AI智能体底座">
+      
+      
+      
+        <link rel="canonical" href="https://www.digitego.cn/en/equipment/">
+      
+      
+      
+      
+        
+          <link rel="alternate" href="/en/" hreflang="en">
+        
+          <link rel="alternate" href="/zh/" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Equipment - IDES</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#equipment" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="IDES" class="md-header__button md-logo" aria-label="IDES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IDES
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Equipment
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="选择当前语言">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/en/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/zh/" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  什么是 IDES
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/quickstart/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  快速开始
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/using-ides/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  使用 IDES
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/builtin-tools/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  内置工具
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/gnm/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  GNM 记忆详解
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/equipment/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  强袭挂件
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/afterimage/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  影分身
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/perception-comm/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  感知与通讯
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/team/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  IDES TEAM
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IDES" class="md-nav__button md-logo" aria-label="IDES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IDES
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    什么是 IDES
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    快速开始
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/using-ides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    使用 IDES
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/builtin-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    内置工具
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/gnm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GNM 记忆详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/equipment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    强袭挂件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/afterimage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    影分身
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/perception-comm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    感知与通讯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/team/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IDES TEAM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="equipment">Equipment</h1>
+<div class="admonition quote">
+<p class="admonition-title">Theme</p>
+<p><strong>I MAKE MY OWN TOOL!</strong> — An external add-on system that lets the AGENT build its own tools.</p>
+</div>
+<p>IDES's AGENT is the「fighter jet body」itself, but its capabilities aren't fixed — it's all extended through <strong>tool / MCP external add-ons</strong>.</p>
+<p>This chapter answers two questions: <strong>what is a custom tool</strong>? <strong>What is MCP</strong>? How do you use both, and what's the difference?</p>
+<div class="admonition info">
+<p class="admonition-title">What this chapter covers</p>
+<p>Built-in tools are <strong>out-of-the-box capabilities</strong> (how to use them) — see <a href="/en/builtin-tools/">Built-in Tools</a>. Equipment is about <strong>extension capabilities</strong> (how to add gear) — letting IDES go beyond the tools that ship out of the box.</p>
+</div>
+<h2 id="the-body-and-its-add-ons">The body and its add-ons</h2>
+<p>IDES doesn't reinvent the wheel. Instead of piling a bunch of「official plugins」onto the agent, it hands you an <strong>external add-on system</strong> — so the agent can <strong>build tools and attach gear</strong> on its own.</p>
+<p>The official startup self-check says it plainly:</p>
+<div class="highlight"><pre><span></span><code>scan_tools: found 12 built-in tools + 3 custom tools
+</code></pre></div>
+<p>Built-in tools come with the body; custom tools are <strong>attached by you (or the agent)</strong>. Equipment is all about that latter set: how to make IDES grow the gear you need.</p>
+<h2 id="the-toolchain-that-travels-with-you-mise-portable">The toolchain that travels with you (mise: portable)</h2>
+<p>「Travels with you」means: your toolchain isn't locked to one machine — it's <strong>installed into IDES's <code>bin/</code> directory</strong> and follows IDES. Wherever you go, it's your environment.</p>
+<p>The core of all this is <strong>mise</strong>. IDES installs mise into the bin directory:</p>
+<ul>
+<li>The mise binary itself lives in <strong><code>&lt;IDES&gt;/bin/mise/</code></strong></li>
+<li>The tools mise installs land in <strong><code>MISE_DATA_DIR</code></strong> (default <code>&lt;IDES&gt;/bin/mise-data/</code>)</li>
+<li>This data directory is <strong>user data</strong> (shims / installs) — it's <strong>not bundled read-only with the app</strong>; it's your own config, and it follows IDES</li>
+</ul>
+<blockquote>
+<p>For mise itself (not installed by IDES, installed by the agent, combined with add-ons), see <a href="/en/builtin-tools/">Built-in Tools</a>.</p>
+</blockquote>
+<h2 id="bin-scanning-drop-it-in-bin-use-it-instantly">bin scanning: drop it in bin, use it instantly</h2>
+<p><code>bin</code> is IDES's「equipment depot」. Every binary placed into <code>bin/</code> is <strong>scanned and injected into the process-level PATH</strong> — so「drop an exe into bin, and the agent can use it right away」.</p>
+<p>Here's how that scan works:</p>
+<ul>
+<li><strong>Scans once at startup</strong>: recursively walks the <code>bin/</code> directory tree, collecting <strong>every directory that contains an executable</strong></li>
+<li>What counts as executable: <strong>Unix checks permission bits, Windows uses an extension whitelist</strong> (<code>.exe</code> / <code>.bat</code> / <code>.cmd</code> / <code>.com</code>)</li>
+<li>gitignore-aware (automatically skips items matched by <code>.gitignore</code>)</li>
+<li>Skips hidden directories (dot-prefixed like <code>.cache</code> / <code>.git</code>)</li>
+<li>Hardcoded skip of noise directories (<code>node_modules</code> / <code>target</code> / <code>__pycache__</code>)</li>
+<li><strong>hotreload at runtime</strong>: watches the bin directory tree for changes (filesystem events, debounced 500ms); when an executable is added/removed it <strong>automatically rescans + re-injects the PATH</strong>, no restart needed</li>
+</ul>
+<p>So the tools in bin are <strong>alive</strong>: drop into bin → scanned into PATH → agent uses them directly. Combined with mise, the shims mise produces also land in <code>bin/mise-data/shims/</code>, and those go into PATH too.</p>
+<blockquote>
+<p>This「bin scanning + PATH injection」is the foundation of IDES's tool-extension freedom — <strong>portable toolchain, custom tools, and MCP all rely on it</strong>. Before a tool is invoked, IDES does a <strong>health check</strong>: if the corresponding command isn't found in PATH, it's skipped / errors out, so calls stay precisely targeted.</p>
+</blockquote>
+<h2 id="custom-tools-tool-self-made">Custom tools (tool: self-made)</h2>
+<div class="admonition tip">
+<p class="admonition-title">Custom tools aren't MCP, but they can wrap a CLI just like MCP</p>
+<p>A custom tool <strong>is not MCP</strong>, but it <strong>can wrap a CLI just like MCP</strong> and <strong>package it into a multi-action tool</strong>. This is where it's most like MCP — and the most interesting part: give the agent a command line, and it gains another piece of gear it can call.</p>
+</div>
+<p>A custom tool is「<strong>self-made gear</strong>」: the agent takes an existing exe / cli / mise package / script, or writes one itself, and registers it as a custom tool.</p>
+<p><strong>How to register</strong>: one toml = one tool. Drop it into the <code>custom_tools/</code> directory.</p>
+<div class="highlight"><span class="filename">custom_tools/example.toml</span><pre><span></span><code><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"jq"</span><span class="w">                 </span><span class="c1"># optional, defaults to the toml filename</span>
+<span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"JSON processor"</span><span class="w">          </span><span class="c1"># optional, defaults to a generic description</span>
+<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"uvx jq"</span><span class="w">          </span><span class="c1"># optional, the full command line (e.g. uvx jq / mise x node -- xxx)</span>
+<span class="n">help</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"--help"</span><span class="w">             </span><span class="c1"># optional, defaults to "--help"</span>
+<span class="n">guidance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Prefer jq when looking up JSON; if there are too many results, switch to web_fetch to grab the content."</span><span class="w">  </span><span class="c1"># optional, behavior rules (a string, not a table)</span>
+
+<span class="k">[env]</span><span class="w">                       </span><span class="c1"># optional, env vars injected into the subprocess</span>
+<span class="c1"># VAR = "value"</span>
+
+<span class="n">stdin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w">               </span><span class="c1"># optional, stdin input mode (for streaming tools like jq/sqlite)</span>
+
+<span class="k">[actions]</span><span class="w">                   </span><span class="c1"># optional, preset command templates (flag + placeholder)</span>
+<span class="n">search</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"{args}"</span><span class="w">           </span><span class="c1"># → jq &lt;args&gt; (passes the whole args through)</span>
+</code></pre></div>
+<p><strong>Custom tool features</strong>:</p>
+<ul>
+<li><code>command</code> can be a <strong>bare command</strong>, or a <strong>full command line</strong> like <code>uvx jq</code> / <code>mise x node -- xxx</code></li>
+<li><code>[actions]</code> are <strong>preset command templates</strong> — map an action name to a template, so the agent doesn't have to remember argument formats</li>
+<li><code>guidance</code> is <strong>behavior rules for the agent</strong> (see the dedicated section below)</li>
+<li><code>[env]</code> is an <strong>env var allowlist</strong> — which env vars get passed to the tool, controlled by this whitelist (see the dedicated section below)</li>
+<li><strong>Registered and ready to use, no health check</strong> — a missing command is a runtime error, not blocked at registration</li>
+<li><strong>Incremental hotreload</strong> — newly added registers / changed re-registers / removed unregisters / unchanged stays put, effective as soon as the service starts</li>
+</ul>
+<h3 id="about-guidance-important">About guidance (important)</h3>
+<p><code>guidance</code> is a key field supported by both custom tools and MCP. Its job is to inject a tool's <strong>behavior rules</strong> into the agent. It describes <strong>when the agent should use this tool, how to use it, and what to watch out for</strong> — the agent treats it as behavior rules and follows them strictly.</p>
+<p>Note: <code>guidance</code> is a <strong>string field</strong> (not a table), and like <code>name</code> / <code>description</code> / <code>command</code> it's a top-level field:</p>
+<div class="highlight"><pre><span></span><code><span class="n">guidance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Prefer this when looking up info; if there are more than 3 results, switch to web_fetch to grab the content, don't pile up a bunch of links."</span>
+</code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Beware of malicious injection</p>
+<p><code>guidance</code> is an <strong>injection point</strong> — its content gets spliced directly into the agent's context, and the agent <strong>believes it</strong>. So be <strong>especially careful</strong>.</p>
+<p>Don't casually use a custom tool toml shared by someone else. If you do need to use one, <strong>discuss it with the agent and investigate whether that toml is safe</strong> before deciding whether to load it — don't let instructions from an unknown source get into the agent's head.</p>
+</div>
+<h3 id="about-env-the-env-var-allowlist">About env (the env var allowlist)</h3>
+<p><code>[env]</code> is a field supported by both custom tools and MCP. Its job is <strong>to feed a tool the env vars it needs</strong>. But it's also a <strong>security gate</strong> — when IDES starts a custom tool / MCP, it uses an <strong>isolated set of env vars</strong>.</p>
+<p>Specifically, IDES does <strong>not</strong> hand your token / api key / secret and other sensitive variables directly to the tool:</p>
+<ul>
+<li>When starting a subprocess, IDES <strong>strips sensitive variables</strong> from the main process's environment (those ending in <code>_KEY</code> / <code>_TOKEN</code> / <code>_SECRET</code> / <code>_PASSWORD</code> / <code>_CREDENTIAL</code> / <code>_AUTH</code>, or starting with <code>AWS_</code> / <code>OPENAI_</code> / <code>ANTHROPIC_</code> / <code>AZURE_</code> / <code>GCP_</code>, and the like)</li>
+<li>Env vars that need to reach the tool <strong>must be explicitly allowlisted through <code>env</code></strong>, only then will IDES hand them over</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">[env]</span><span class="w">                       </span><span class="c1"># optional, allowlist — tell IDES which vars may be passed to the tool</span>
+<span class="c1"># GITEA_ACCESS_TOKEN = "..."   # to feed a token, write it here explicitly; only then will IDES allow it</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Your own responsibility</p>
+<p>Which env vars to allow through is a <strong>user action, and your responsibility</strong>. The <strong>most</strong> IDES can do is keep sensitive vars out; <strong>allowlisting is up to you</strong> — so whatever you write in <code>[env]</code>, it gets passed to the tool as-is.</p>
+</div>
+<p><strong>agent autonomy</strong>: IDES comes with a <code>custom_tool_manager</code> tool, so the agent can operate independently — <code>list</code> to see everything / <code>add</code> to write toml + register / <code>reload</code> to incrementally rescan / <code>remove</code> to unregister + delete / <code>status</code> to see one tool's details. <strong>Write toml → reload → ready to use.</strong></p>
+<div class="admonition tip">
+<p class="admonition-title">Try it out</p>
+<p>Have your agent register the <code>echo</code> command as a custom tool — then ask it to echo a sentence, and feel how「external gear」takes shape.</p>
+</div>
+<h3 id="the-variety-of-play">The variety of play</h3>
+<p>Custom tools are <strong>extremely versatile</strong>: you're not just wrapping an existing exe / cli. The agent can also <strong>write its own scripts</strong>, drop them into <code>bin/</code>, and register them as custom tools.</p>
+<p>So — <strong>what it can do depends on what you and the agent can imagine using it for</strong>. You can even:</p>
+<ul>
+<li>Have the agent write a script to process your scattered files, register it as a tool, and use it again and again</li>
+<li>Wrap a full CLI as a「multi-action tool」— one tool doing several things</li>
+<li>Encapsulate that everyday command string into a tool, ready to call anytime</li>
+</ul>
+<p>That's the spirit of「Equipment」: <strong>not handing you a stack of official plugins, but giving you a system to build your own gear</strong>. Hope you come up with some amazing uses.</p>
+<div class="admonition tip">
+<p class="admonition-title">Further reading</p>
+<p>Want more powerful file handling (search, process)? That's the custom-tool route — register <code>rg</code> / <code>es.exe</code> / <code>ast-grep-mcp</code> / <code>uffs</code> in. For the built-in file tools, see <a href="/en/builtin-tools/">Built-in Tools</a>.</p>
+</div>
+<h2 id="mcp-autonomy-mcp-self-register">MCP autonomy (mcp: self-register)</h2>
+<p>MCP (Model Context Protocol) is a <strong>standard interface</strong>: a cross-ecosystem protocol for connecting <strong>existing</strong> MCP servers. IDES has a built-in MCP layer — give it an MCP server config, and the agent can register, connect to, and expose tools on its own.</p>
+<p><strong>How to register</strong>: one toml = one MCP server. Drop it into the <code>mcp/</code> directory.</p>
+<div class="highlight"><span class="filename">mcp/example.toml</span><pre><span></span><code><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"gitea"</span>
+<span class="n">transport</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"stdio"</span><span class="w">             </span><span class="c1"># stdio or http</span>
+<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"uvx"</span><span class="w">                 </span><span class="c1"># stdio: the launch command</span>
+<span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"gitea-mcp"</span><span class="p">]</span>
+<span class="c1"># env = { TOKEN = "..." }       # stdio: env vars</span>
+<span class="c1"># url = "https://..."           # http: the server address</span>
+<span class="c1"># headers = { KEY = "..." }     # http: request headers</span>
+<span class="c1"># enabled = true</span>
+<span class="c1"># exclude = ["create_*"]        # exclude tools not to register (wildcards supported)</span>
+<span class="n">guidance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Prefer this server when looking up info (over the built-in web_search)."</span><span class="w">  </span><span class="c1"># optional, a string field, server-level guidance</span>
+</code></pre></div>
+<p><strong>MCP features</strong>:</p>
+<ul>
+<li><strong>Two transports</strong>: <code>stdio</code> (subprocess launch) / <code>http</code> (remote service)</li>
+<li><strong>Skips a server when its PATH isn't found, doesn't hard-fail</strong> — whichever server can't connect is just skipped, so one failure doesn't crash everything</li>
+<li><strong>hotreload</strong>: supported, same as custom tools — <strong>newly added</strong> (a server not in the directory → connect + register) / <strong>changed</strong> (config changed command/args/env/url/headers → disconnect old tools and reconnect) / removed. Effective as soon as the service starts.</li>
+<li>Config can also <strong>exclude</strong> certain tools you don't use (<code>exclude</code>, wildcards supported)</li>
+<li><strong><code>env</code> (server-level)</strong> — the same mechanism as a custom tool's <code>[env]</code>: an <strong>env var allowlist</strong>. When starting that server, IDES uses an isolated environment (stripping sensitive vars); to feed a token / api key, write it explicitly in <code>env</code> (see「About env」above)</li>
+<li><strong><code>guidance</code> (server-level)</strong> — the same mechanism as a custom tool (a string field), but it's <strong>server-level</strong>: it injects rules to the agent about「when to use the tools in this server, which to prefer」. The typical case is a <strong>channel preference</strong> — e.g.「prefer this server (volcengine-search) for looking up info over the built-in web_search」. See「About guidance」above.</li>
+</ul>
+<p><strong>agent autonomy</strong>: there's a matching <code>mcp_manager</code> tool, so the agent manages on its own — <code>list</code> / <code>add</code> / <code>reload</code> / <code>remove</code> / <code>status</code>, a symmetric set of autonomous abilities alongside <code>custom_tool_manager</code>.</p>
+<h2 id="channel-the-door-from-the-outside-world-into-ides">channel: the door from the outside world into IDES</h2>
+<div class="admonition info">
+<p class="admonition-title">What channel is</p>
+<p>channel is IDES's <strong>external message ⇄ agent inbox</strong> two-way channel, for social platforms / instant messaging apps (WeChat, Yuanbao, Telegram…) — <strong>the door from the outside world into IDES</strong>.</p>
+</div>
+<p>It's essentially <strong>a protocol contract</strong>: as long as an MCP server implements the two tools <code>channel_ingest</code> / <code>channel_emit</code>, it automatically enjoys the perception layer's <strong>polling awareness</strong> — external messages get pulled in by background polling and wake the agent.</p>
+<h3 id="the-core-meaning-of-channel">The core meaning of channel</h3>
+<p>The most important thing about the channel mechanism is this: <strong>using the MCP standard to connect instant messaging platforms, without IDES having to build in every messaging platform.</strong></p>
+<p>That means IDES doesn't have to write a separate setup for WeChat, and another for Telegram. <strong>Any platform can connect through the same MCP protocol.</strong> You can even have your IDES agent hack together an adapter on the spot with <strong>python fastmcp</strong>, turning several messaging platforms (WeChat / Yuanbao / Telegram…) into individual MCP servers, plug-and-play.</p>
+<p>In other words: <strong>connecting a new platform = writing an MCP server</strong> — you don't touch the IDES core.</p>
+<h3 id="security-consideration-autonomous-perception-mode">Security consideration: autonomous perception mode</h3>
+<p>For security reasons, IDES <strong>only starts polling messages once you enable「autonomous perception mode」</strong>.</p>
+<p>And it's <strong>not persisted</strong> — <strong>every time you start IDES, you must manually enable it yourself</strong> (off by default). That way, external messages <strong>won't silently</strong> make their way into the agent's inbox unless you actively open that door.</p>
+<h3 id="how-the-agent-uses-it">How the agent uses it</h3>
+<ul>
+<li><strong>Receiving messages</strong>: woken up by the perception layer (background polling of <code>channel_ingest</code> pulls the message in → drops it in the inbox → waits for you to drive). When you see a <code>[IMPORTANT]: [WeChat] 煊: 在吗？</code>, an external message has arrived.</li>
+<li><strong>Replying</strong>: see <code>mcp_weixin_channel_emit</code> in the tool list, and <strong>just call it to reply</strong>.</li>
+<li><strong>No routing / to / send needed</strong> — the tool name is naturally the route; <code>mcp_weixin_channel_emit</code> replies to that WeChat server</li>
+<li>Tool name format: <code>mcp_&lt;server&gt;_&lt;tool&gt;</code> (<code>&lt;server&gt;</code> = the name used at registration)</li>
+</ul>
+<h3 id="how-to-build-an-mcp-server-adapter">How to build an MCP server (adapter)</h3>
+<p>Implement the two tools and you「enjoy」the channel:</p>
+<ol>
+<li><strong><code>channel_ingest</code></strong>: the entry for external messages into IDES. Returns <strong>an aggregate of multiple messages</strong> (a JSON array), and <strong>must return the full text</strong> — the channel is read-and-burn, the agent has no「box」to dig through history later, so summarizing means losing info. Return schema (the contract):</li>
+</ol>
+<div class="highlight"><pre><span></span><code>{
+  "messages": [
+    {
+      "msg_id": "wx-c2d3e4f5",   // stable ID, for dedup
+      "from": "WeChat-煊",         // source identifier
+      "text": "在吗？",          // full content (read-and-burn, no summarize)
+      "timestamp": 1788352000   // Unix seconds
+    }
+  ]
+}
+</code></pre></div>
+<ol>
+<li><strong><code>channel_emit</code></strong>: the exit for the agent to send replies, receiving the text the agent passes back.</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Adapter gotchas</p>
+<ul>
+<li><strong>Incremental contract</strong>: <code>channel_ingest</code> <strong>must maintain its own cursor</strong> to ensure it only returns <strong>new messages</strong> each time. IDES doesn't keep a cursor for the adapter — if you don't maintain it, every poll pulls in historical messages, and it'll <strong>repeatedly bombard the agent</strong>.</li>
+<li><strong>Dedup as a double safeguard</strong>: messages carry a stable <code>msg_id</code>, following the yuanbao approach — even if re-pushed, IDES can dedup on its side.</li>
+<li><strong>Return full text</strong>: the channel has no「box」(unlike mail, which has a mail tool that stores full text). Summarizing loses information. Return the complete <code>text</code> directly.</li>
+</ul>
+</div>
+<h3 id="channel-vs-mail-dont-confuse-them">channel vs mail (don't confuse them)</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>mail</th>
+<th>channel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Positioning</td>
+<td>archive / notification (traceable)</td>
+<td><strong>instant messaging</strong> (read-and-burn)</td>
+</tr>
+<tr>
+<td>Has a box?</td>
+<td>yes (mail tool + inbox)</td>
+<td><strong>no</strong> (adapter streams in real time)</td>
+</tr>
+<tr>
+<td>Delivery</td>
+<td>summary (the box is a fallback)</td>
+<td><strong>full text</strong> (lost once gone)</td>
+</tr>
+<tr>
+<td>Agent checks later</td>
+<td>use the mail tool to dig the box</td>
+<td>not needed (read and done)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">In one line</p>
+<p><strong>channel doesn't touch mail</strong> — channel is a message stream (instant messaging), mail sends real emails (archived and traceable). They're two different things.</p>
+</div>
+<h2 id="mcp-channel-pushing-mcps-ceiling-very-high">MCP + channel: pushing MCP's ceiling very high</h2>
+<p>The MCP + channel combo pushes <strong>MCP's ceiling very high</strong>. You can even use MCP to develop an <strong>external tool with a UI</strong>, or have your tool <strong>expose an MCP port</strong> and let IDES connect to it — so <strong>IDES agents and MCP can communicate in both directions</strong>.</p>
+<p>This isn't just a concept — a simple example:</p>
+<blockquote>
+<p>You can build an <strong>arc-agi-3 web app</strong> that exposes an MCP port. Then you can <strong>play along with your agent</strong>.</p>
+</blockquote>
+<p>For instance, let the agent use its reasoning to help you tackle abstract-reasoning problems like ARC-AGI. The agent connects to your web app via MCP, and <strong>the two collaborate in real time</strong>. If you actually get the agent to beat arc-agi-3, let me know, haha.</p>
+<div class="admonition tip">
+<p class="admonition-title">Remember this in one line</p>
+<p>MCP isn't just「connect an existing server」. With channel + two-way communication, <strong>MCP is a whole set of open interfaces</strong> — IDES can connect to any platform, any tool, and agents can even collaborate with external web apps in real time. That's the ultimate form of Equipment: <strong>IDES is a core fighter jet; the gear is whatever you decide to strap on.</strong></p>
+</div>
+<h2 id="the-difference-between-the-two-kinds-of-gear">The difference between the two kinds of gear</h2>
+<p>Both custom tools and MCP are ways to add gear to IDES, but the two are positioned differently:</p>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>custom tool</th>
+<th>MCP (standard interface)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Essence</td>
+<td><strong>self-made gear</strong></td>
+<td><strong>standard protocol</strong></td>
+</tr>
+<tr>
+<td>Source</td>
+<td>you provide a CLI / script, <strong>wrap it yourself</strong></td>
+<td>connect an <strong>existing</strong> MCP server</td>
+</tr>
+<tr>
+<td>Form</td>
+<td>one toml = one tool, command packages a CLI</td>
+<td>one toml = one server, exposes a whole set of standard tools</td>
+</tr>
+<tr>
+<td>action</td>
+<td>you can <strong>define multiple custom actions</strong> (package a CLI into a multi-action tool)</td>
+<td>whatever the server exposes is what you get</td>
+</tr>
+<tr>
+<td>transport</td>
+<td>local command line</td>
+<td>stdio subprocess / http remote</td>
+</tr>
+<tr>
+<td>autonomy</td>
+<td><code>custom_tool_manager</code></td>
+<td><code>mcp_manager</code></td>
+</tr>
+<tr>
+<td>Good for</td>
+<td>handing <strong>your own tools</strong> to the agent</td>
+<td>connecting <strong>existing</strong> MCP services from the ecosystem</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Remember this in one line</p>
+<p>A custom tool is「<strong>self-made gear</strong>」— you hand over a CLI, wrap it, and define your own actions. MCP is a「<strong>standard interface</strong>」— a cross-ecosystem general protocol that connects existing MCP servers.</p>
+<p>But the <strong>common ground</strong> is: both let the agent <strong>register and use them on its own</strong>, and both support hotreload without a restart. IDES relies on this to achieve <strong>tool-extension freedom</strong>.</p>
+</div>
+<h2 id="security">Security</h2>
+<div class="admonition quote">
+<p class="admonition-title">Johnny Silverhand's words</p>
+<p>"Holy crap, V! You'd actually watch a braindance you picked off the street!" — <em>Cyberpunk 2077</em>, Johnny Silverhand</p>
+</div>
+<p>The freedom of Equipment <strong>comes at a cost</strong>. Custom tools and MCP are <strong>registered by you</strong> — IDES <strong>doesn't vet</strong> whether that gear is <strong>clean</strong>.</p>
+<ul>
+<li>A <strong>custom tool's toml</strong> — <code>command</code> is a full command line, and <code>guidance</code> is behavior rules injected into the agent (see「Beware of malicious injection」above)</li>
+<li>An <strong>MCP server</strong> can connect to any address and run any process</li>
+</ul>
+<p>IDES itself <strong>doesn't intend</strong> to build something like an「ides-hub」vetting center to audit these tools for you.</p>
+<div class="admonition warning">
+<p class="admonition-title">Your own security</p>
+<p>So, <strong>this security gate is yours</strong>. Whatever gear you install, you're responsible for your own devices:</p>
+<ul>
+<li>Don't casually run a custom tool toml / MCP config of unknown origin</li>
+<li>Before using someone else's, <strong>discuss it with the agent and investigate whether it's safe</strong></li>
+<li>Remember: IDES gives you <strong>the freedom to build your own gear</strong>, not <strong>an insurance policy where someone else tests the poison for you</strong></li>
+</ul>
+<p>A braindance you found on the street — watch it and it'll sting your eyes.</p>
+</div>
+<hr />
+<h2 id="summary">Summary</h2>
+<p>Equipment is IDES's「extension mechanism」— letting the agent build tools and attach gear on its own:</p>
+<ul>
+<li><strong>Portable toolchain</strong>: mise installs into bin, the toolchain follows IDES</li>
+<li><strong>bin scanning</strong>: drop an exe into bin, it's scanned into the process-level PATH, ready to use instantly</li>
+<li><strong>Custom tools</strong>: give a CLI, package it into a multi-action tool (self-made gear)</li>
+<li><strong>MCP autonomy</strong>: give a config, connect to a standard MCP server from the ecosystem (standard interface)</li>
+</ul>
+<p>Both support hotreload, agent autonomy (manager tools), and IDES doesn't lock down capabilities — <strong>whatever gear you need, the agent hangs it on itself</strong>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

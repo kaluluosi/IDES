@@ -1,0 +1,880 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="rust native memory ai agent harness / RUST原生记忆AI智能体底座">
+      
+      
+      
+        <link rel="canonical" href="https://www.digitego.cn/en/using-ides/">
+      
+      
+      
+      
+        
+          <link rel="alternate" href="/en/" hreflang="en">
+        
+          <link rel="alternate" href="/zh/" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Using IDES - IDES</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#using-ides" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="IDES" class="md-header__button md-logo" aria-label="IDES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IDES
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Using IDES
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="选择当前语言">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/en/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/zh/" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  什么是 IDES
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/quickstart/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  快速开始
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/using-ides/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  使用 IDES
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/builtin-tools/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  内置工具
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/gnm/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  GNM 记忆详解
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/equipment/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  强袭挂件
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/afterimage/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  影分身
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/perception-comm/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  感知与通讯
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/team/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  IDES TEAM
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IDES" class="md-nav__button md-logo" aria-label="IDES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IDES
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    什么是 IDES
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    快速开始
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/using-ides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    使用 IDES
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/builtin-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    内置工具
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/gnm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GNM 记忆详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/equipment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    强袭挂件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/afterimage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    影分身
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/perception-comm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    感知与通讯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/team/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IDES TEAM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="using-ides">Using IDES</h1>
+<p>This chapter walks you through the IDES settings interface. Every IDES setting lives behind the ⚙ icon in the top-right corner. Let's start with <strong>what each section does and when you actually need to touch it</strong>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Save, then restart to apply</p>
+<p>Most settings here take effect only after you click <strong>[ Save ]</strong> and then <strong>[ Restart ]</strong> IDES — every page shows this yellow note at the bottom.</p>
+</div>
+<h2 id="let-the-agent-solve-itself">Let the Agent Solve Itself</h2>
+<p>IDES is built on an <strong>agent autonomy</strong> philosophy — <strong>IDES's agent can manage and configure IDES itself</strong>.</p>
+<p>So the right way to use IDES is <strong>not for you to configure everything</strong>, but rather:</p>
+<blockquote>
+<p>Talk to the agent, tell it what you want to do, and let <strong>the agent configure itself</strong>.</p>
+</blockquote>
+<p>That's also why IDES has <strong>so few configuration options</strong>. IDES is like an <strong>operating system</strong> — everything can be taken care of by the agent as you interact with it.</p>
+<div class="admonition tip">
+<p class="admonition-title">What this chapter is about</p>
+<p>Since the agent can configure itself, it's worth understanding <strong>what each item in the settings interface is and when you need to touch it</strong>. Below we go through each one, from models and agents to memory and sensing.</p>
+</div>
+<h2 id="models-model">Models (MODEL)</h2>
+<p>This is the most commonly used section — it decides which model IDES uses to talk to you.</p>
+<p><img alt="MODEL page" src="../../settings-model.png" /></p>
+<h3 id="provider-model-api-key">Provider / Model / API Key</h3>
+<ul>
+<li><strong>Provider</strong>: pick the model provider (DeepSeek, OpenAI, etc.)</li>
+<li><strong>Model</strong>: choose from the candidates, or type in the model name manually</li>
+<li><strong>API Key</strong>: the key for your provider (if you already filled it in Quick Start, you can leave this alone)</li>
+</ul>
+<h3 id="context-window-slider">Context window slider</h3>
+<p>The slider has steps <strong>8k / 16k / 32k / 64k / 128k / 200k / 1M</strong>. It does <strong>not limit actual conversation</strong> — its only job is to tell IDES how large your model's context is, so the <strong>status bar in the bottom-right</strong> can accurately estimate and display how much context the current conversation has consumed.</p>
+<p>Set it too low and the status bar warns you early; set it too high and it's over-optimistic — <strong>just set it to your model's real context size</strong>.</p>
+<h3 id="reasoning-effort-reasoning-effort">Reasoning effort (REASONING EFFORT)</h3>
+<p>Controls how hard thinking models work: leave empty (default) / <code>low</code> (fast) / <code>medium</code> / <code>high</code> (deep). <strong>Only applies to reasoning models</strong> (e.g., DeepSeek-R1, the o-series); normal models ignore it.</p>
+<h3 id="vision-model-vision">Vision model (VISION)</h3>
+<p>IDES can "see" — when you send an image to the agent, a vision model parses it. Two ways to set this up:</p>
+<ul>
+<li><strong>Use the main model for vision</strong> (checked by default): the main model handles images too, no extra config needed</li>
+<li><strong>Separate vision model</strong>: uncheck it, then pick a vision model from another provider (the dropdown reuses your chat providers + model name + a separate API Key)</li>
+</ul>
+<p>Also, <strong>MAX IMAGE (MB)</strong> sets the upper size limit for a single image.</p>
+<h2 id="agents-agent">Agents (AGENT)</h2>
+<p>Controls the run boundary of an agent's task.</p>
+<p><img alt="AGENT page" src="../../settings-agent.png" /></p>
+<ul>
+<li><strong>MAX ITERATIONS</strong>: the maximum number of steps an agent can take in a single task (default <code>100</code>) — prevents the agent from getting stuck in an infinite loop</li>
+<li><strong>NOTIFY THRESHOLD</strong>: nudges the agent <strong>when a task's iterations get close to the limit</strong> — when used iterations reach this fraction of the max (default <code>0.8</code>), the agent gets a reminder like "you're almost at the limit, wrap it up." It's a signal to the agent, not a popup for you</li>
+</ul>
+<h2 id="memory-gnm">Memory (GNM)</h2>
+<p><img alt="GNM page" src="../../settings-gnm.png" /></p>
+<p>There's only <strong>DATA PATH</strong> here — which directory your memory lives in (<code>data/state</code>). Click <strong>[ Open ]</strong> to see it. Read-only in the current version.</p>
+<div class="admonition tip">
+<p class="admonition-title">GNM memory explained</p>
+<p>GNM is IDES's core memory mechanism; this page is just a "peek at where memory is stored." The GNM memory system <strong>needs no configuration</strong> — it's already optimal — so this section has <strong>nothing to adjust</strong>. If you want to understand the GNM memory system, see the <strong>[ GNM memory explained ]</strong> section.</p>
+</div>
+<h2 id="sensing-sense">Sensing (SENSE)</h2>
+<p><img alt="SENSE page" src="../../settings-sense.png" /></p>
+<p>Two fields that control the agent's <strong>autonomous sensing</strong>:</p>
+<ul>
+<li><strong>IDLE TIMEOUT (S)</strong>: how long after you stop sending messages the agent goes into standby autonomous mode (default <code>30</code> seconds)</li>
+<li><strong>TICK INTERVAL (S)</strong>: how often it polls while in autonomous mode (default <code>10</code> seconds)</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Autonomous sensing mode</p>
+<p>This decides when the agent "wakes up to take a look and see if there's anything to do." For a deeper dive, see the <strong>[ Autonomous sensing mode ]</strong> section.</p>
+</div>
+<h2 id="mail-mail">Mail (MAIL)</h2>
+<p>Email account management + built-in mail tools.</p>
+<p><img alt="MAIL page" src="../../settings-mail.png" /></p>
+<ul>
+<li><strong>Account management</strong>: <strong>[ ADD ]</strong> to add / <strong>[ DELETE ]</strong> to remove an account; <code>NAME</code> is the account's unique identifier (the mail tool routes by name)</li>
+<li><strong>Connection info</strong>: IMAP / SMTP HOST, PORT (default IMAP 993, SMTP 465), login username, password</li>
+<li><strong>TEST CONN</strong>: test the IMAP connection and send a message with the current form</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">What the mail system is for</p>
+<p>There are two main uses for the mail system:</p>
+<ol>
+<li><strong>Give the agent its own mailbox</strong> (e.g., agentmail) — so you can email the agent directly, and the agent can email you on its own</li>
+<li><strong>Configure your own mailbox</strong> — so the agent can help manage your mail (send, receive, triage, reply to todos)</li>
+</ol>
+<p>For the full mail system (how the agent uses email, who it talks to, event-driven auto-delivery), see the <strong>[ Mail system ]</strong> section.</p>
+</div>
+<h2 id="tools-tools">Tools (TOOLS)</h2>
+<p>Controls the environment the agent uses to run commands.</p>
+<p><img alt="TOOLS page" src="../../settings-tools.png" /></p>
+<ul>
+<li><strong>SHELL BACKEND</strong>: the shell the agent uses to run commands. <strong>Leave empty for the system default — <code>cmd</code> on Windows, <code>bash</code> on Linux/macOS</strong>. To switch to <code>nu</code> / <code>powershell</code> / <code>zsh</code>, type the shell name. This is a global setting; changing it affects all command execution.</li>
+<li><strong>TOOL TIMEOUT (S)</strong>: the maximum timeout for a tool call (default <code>300</code>)</li>
+<li><strong>CUSTOM TOOLS DIR / MCP DIR</strong>: the <strong>[ Open ]</strong> button jumps straight to your external-tools directory</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">External tools</p>
+<p>Built-in tools can't be turned off; this page manages "which shell the agent uses to run commands, how long it waits, and where to find external tools." The external-tools system (custom tools / MCP) is covered in the <strong>[ External tools ]</strong> section.</p>
+</div>
+<h2 id="sessions-session">Sessions (SESSION)</h2>
+<p>A plain session-log directory — <strong>you won't need it day to day</strong>.</p>
+<p><img alt="SESSION page" src="../../settings-session.png" /></p>
+<ul>
+<li><strong>SESSION DIR</strong>: where session data lives (<code>data/sessions</code>), <strong>[ Open ]</strong> to see it. Read-only.</li>
+<li>The <strong>[ Reset ]</strong> button below is for restoring factory settings if something goes wrong — use it with care</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Not for daily use</p>
+<p>This page just tells you "where IDES stores sessions and whether you can clear them" — nothing more.</p>
+</div>
+<h2 id="webui-usage">WebUI Usage</h2>
+<p>This section covers the <strong>chat interface</strong> interactions — outside the settings, the everyday operations that are easy to overlook.</p>
+<h3 id="message-bubbles-select-to-quote-comment">Message bubbles: select to quote / comment</h3>
+<p><img alt="Message bubble context menu" src="../../webui-message-menu.png" /></p>
+<p>Select text in a bubble and right-click to bring up a menu — besides copying, you can also directly <strong>quote</strong> or <strong>comment</strong>:</p>
+<ul>
+<li><strong>Copy full text</strong>: copy the entire message</li>
+<li><strong>Copy selection</strong>: copy only the selected part</li>
+<li><strong>Quote selection <code>Ctrl+Q</code></strong>: prefix each selected line with <code>&gt;</code> to turn it into a quote block, then <strong>insert it into the input box</strong> (not sent, so you can keep editing)</li>
+<li><strong>Comment <code>Ctrl+M</code></strong>: open a comment window (a read-only quote + your comment text); on confirm it inserts into the input box as <code>COMMENT: xxx</code></li>
+</ul>
+<p><img alt="Review REPLAY popup" src="../../webui-review.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">When the shortcuts apply</p>
+<p><code>Ctrl+Q</code> (quote) / <code>Ctrl+M</code> (comment) only work when <strong>text is selected</strong>. Select a passage → use the shortcut directly — faster than right-clicking.</p>
+</div>
+<h3 id="paste-a-screenshot">Paste a screenshot</h3>
+<p>Copy an image, then just <strong><code>Ctrl+V</code></strong> to paste it into the input box — the image <strong>inserts at the cursor position</strong>, not at the end. When you send it to the agent, a vision model parses it.</p>
+<div class="admonition note">
+<p class="admonition-title">A screenshot is just an image</p>
+<p>A pasted image is sent to the agent as an image and recognized by a vision model (the main model by default). See "Models → Vision model" for image handling.</p>
+</div>
+<h3 id="drag-a-file-onto-the-input-box">Drag a file onto the input box</h3>
+<p><img alt="Drag-drop file onto input box" src="../../webui-drag-drop.png" /></p>
+<p><strong>Drag a file into the chat window</strong> and the area above the input box highlights "release to add"; when you let go, the file's <strong>full path</strong> is inserted line by line into the input box. You can keep editing; when you press Enter to send, the path is naturally folded into the message.</p>
+<p>You can also use <strong><code>Ctrl+K</code></strong> to bring up the command palette and pick <strong>SEND FILES</strong> to open a file picker.</p>
+<h3 id="command-palette">Command palette</h3>
+<p><img alt="Command palette" src="../../webui-command-palette.png" /></p>
+<p>Press <strong><code>Ctrl+K</code></strong> (<strong><code>Cmd+K</code></strong> on Mac) to bring up the quick command palette; <code>Esc</code> closes it. The command list supports type-to-filter, <code>↑↓</code> to highlight + <code>Enter</code> to execute.</p>
+<p>Ready-made commands:</p>
+<ul>
+<li><strong>OPEN SETTINGS</strong>: open the settings popup</li>
+<li><strong>SEND FILES</strong>: open a file picker to send files</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Command palette vs. drag-and-drop</p>
+<p>Both are ways to "hand a file to the agent." Drag it in if you like the mouse, or <code>Ctrl+K</code> → <code>SEND FILES</code> if you prefer the keyboard — whatever fits your habit.</p>
+</div>
+<h3 id="working-directory-cwd-and-context-files">Working directory (cwd) and context files</h3>
+<p><img alt="cwd switch" src="../../webui-cwd-switch.png" /></p>
+<p><strong>Switch working directory</strong>: click the cwd panel at the bottom of the input box and pick a directory. After switching, a popup asks whether to <strong>notify the agent that the working directory has changed</strong> — confirm and the agent knows.</p>
+<p><strong>Context files</strong>: the agent looks up from the current working directory for <strong>the nearest project constraint file</strong>, using it as background knowledge about your project — any of <code>AGENTS.md</code> / <code>CLAUDE.md</code> / <code>.HERMES.md</code> / <code>.CURSORRULES</code> in the project root (case-insensitive) is a candidate.</p>
+<div class="admonition tip">
+<p class="admonition-title">How to use it</p>
+<p>Put an <code>AGENTS.md</code> (or <code>CLAUDE.md</code>) in your project root with your project conventions, coding standards, and things to watch out for — the agent reads it every time, so you don't have to repeat yourself. It <strong>ignores suspicious instructions</strong>; if content is too long it <strong>keeps the key parts</strong>.</p>
+</div>
+<h3 id="status-bar">Status bar</h3>
+<p><img alt="Status bar" src="../../webui-statusbar.png" /></p>
+<p>The status bar in the bottom-right shows live run state: <strong>context usage</strong> (how much the current conversation has used and whether it's close to the limit), sub-agent count, billing, debug toggle, version, and more. It lets you see the agent's current "temperature and load" at a glance. The horizontal row in the figure is the status bar; to its right is the "telemetry details" panel.</p>
+<div class="admonition tip">
+<p class="admonition-title">How to read context usage</p>
+<p>The context usage shown in the status bar is tied to the <strong>context window</strong> you set (the model page slider) — set your model's real context size accurately and this figure will be accurate too.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

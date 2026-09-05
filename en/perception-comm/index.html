@@ -1,0 +1,868 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="rust native memory ai agent harness / RUST原生记忆AI智能体底座">
+      
+      
+      
+        <link rel="canonical" href="https://www.digitego.cn/en/perception-comm/">
+      
+      
+      
+      
+        
+          <link rel="alternate" href="/en/" hreflang="en">
+        
+          <link rel="alternate" href="/zh/" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Perception & Communication - IDES</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#perception-communication" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="IDES" class="md-header__button md-logo" aria-label="IDES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IDES
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Perception &amp; Communication
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="选择当前语言">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/en/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/zh/" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  什么是 IDES
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/quickstart/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  快速开始
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/using-ides/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  使用 IDES
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/builtin-tools/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  内置工具
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/gnm/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  GNM 记忆详解
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/equipment/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  强袭挂件
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/afterimage/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  影分身
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/perception-comm/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  感知与通讯
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/team/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  IDES TEAM
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IDES" class="md-nav__button md-logo" aria-label="IDES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IDES
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    什么是 IDES
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    快速开始
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/using-ides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    使用 IDES
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/builtin-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    内置工具
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/gnm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GNM 记忆详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/equipment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    强袭挂件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/afterimage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    影分身
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/perception-comm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    感知与通讯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/team/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IDES TEAM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="perception-communication">Perception &amp; Communication</h1>
+<div class="admonition quote">
+<p class="admonition-title">Thesis</p>
+<p><strong>IDES isn't "you call it and it moves" — it's "it hears you on its own, and comes to you."</strong></p>
+</div>
+<p>Everything so far has been about <strong>you using IDES proactively</strong> — the move-in-ready home, built-in tools, even the afterimages, are all things you <strong>initiate</strong>. But IDES has one more advanced capability: <strong>Perception &amp; Communication</strong>.</p>
+<p>This chapter covers how IDES "hears" the outside world and responds to you proactively — without you having to call on it with every single message.</p>
+<div class="admonition info">
+<p class="admonition-title">This chapter covers</p>
+<ul>
+<li><strong>Autonomous perception mode</strong>: The switch that turns your agent from "passively waiting for you to call" into "actively sensing the outside world."</li>
+<li><strong>Mail system</strong>: IDES's built-in agent mailbox for receiving, reading, and sending <strong>real emails</strong>.</li>
+<li><strong>Message platform adapters</strong>: Connect your agent to <strong>instant messaging apps</strong> like WeChat and Telegram, so it can talk to you even when you're out and about.</li>
+</ul>
+</div>
+<h2 id="autonomous-perception-mode">Autonomous Perception Mode</h2>
+<p>After using IDES for a while, you might have noticed it's more like an assistant that <strong>waits for you to speak before it acts</strong>. "Autonomous perception mode" lets you choose a more advanced usage — <strong>letting it hear what's going on out there on its own and come to you</strong>.</p>
+<h3 id="before-you-turn-it-on-the-agent-is-passive">Before you turn it on: the agent is "passive"</h3>
+<p>When it's off, the agent <strong>only answers when you ask</strong>. If you want it to check email, you have to send it a message to do so. If you want it to check WeChat, you have to tell it to.</p>
+<h3 id="once-its-on-the-agent-actively-senses">Once it's on: the agent "actively" senses</h3>
+<p>With autonomous perception mode on, the agent is like <strong>having a pair of ears</strong> — it goes and checks on its own whether there's anything new out there:</p>
+<ul>
+<li>Whether <strong>new email</strong> has arrived in its mailbox</li>
+<li>Whether <strong>new messages</strong> have come in from platforms like WeChat or Telegram</li>
+</ul>
+<p>If there is, it <strong>wakes up on its own</strong> and handles it for you. You don't have to call on it for everything.</p>
+<div class="admonition warning">
+<p class="admonition-title">This switch is off by default</p>
+<ul>
+<li><strong>Off by default</strong>: IDES won't make decisions for you — by default it doesn't poll the outside world. If you want to use it, you have to <strong>turn it on yourself</strong>.</li>
+<li><strong>Re-open it on every startup</strong>: It doesn't remember your last switch state — this ensures external messages can't <strong>sneak into</strong> the agent's inbox unless you deliberately open that door.</li>
+</ul>
+</div>
+<h3 id="how-to-turn-it-on">How to turn it on</h3>
+<p><strong>Turn this switch on</strong> in the IDES interface and the agent enters "autonomous mode." Once on, the top of the interface displays <strong><code>[Autonomous mode on]</code></strong> —</p>
+<p><img alt="Autonomous mode on" src="../../perception-autonomous.png" /></p>
+<p>Seeing this indicator means the agent has already "heard" the outside world and will proactively watch email and messaging platforms for new activity.</p>
+<h3 id="in-short">In short</h3>
+<p>Autonomous perception mode is about giving the agent <strong>a pair of ears</strong>. With it on, the mail and messaging platforms described below truly <strong>come alive</strong>. Without it, they just <strong>sit there</strong>, waiting for you to speak before they move.</p>
+<h2 id="mail-system">Mail System</h2>
+<p>IDES ships with an integrated mail system — the agent has its <strong>own real mailbox</strong> and can receive, read, and send <strong>real emails</strong>. IDES acts as an agent mail client.</p>
+<p>See <a href="/en/builtin-tools/#mail">Built-in tools · mail</a> for how to call it.</p>
+<h3 id="what-it-is">What it is</h3>
+<p>A regular person's mailbox is <strong>their own</strong>. This mailbox in IDES is <strong>for the agent</strong> — it has its own independent mail account and can genuinely send and receive email, not just simulate an inbox.</p>
+<p>Here's what you can do with it:</p>
+<table>
+<thead>
+<tr>
+<th>What you can do</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Receive</strong></td>
+<td>The agent can see what new mail is in its mailbox</td>
+</tr>
+<tr>
+<td><strong>Read</strong></td>
+<td>Open to view the full content</td>
+</tr>
+<tr>
+<td><strong>Send</strong></td>
+<td>Send out using the agent's identity</td>
+</tr>
+<tr>
+<td><strong>Manage</strong></td>
+<td>Delete, mark as read, etc.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="pair-it-with-autonomous-perception-mode">Pair it with autonomous perception mode</h3>
+<p>The mail system is most useful <strong>when paired with autonomous perception mode</strong>:</p>
+<ul>
+<li><strong>Without autonomous perception</strong>: The agent's mailbox "sits there" — it only checks when you tell it to.</li>
+<li><strong>With autonomous perception</strong>: The agent <strong>proactively checks its mailbox</strong>, and when a new email arrives it <strong>wakes up on its own to handle it</strong>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># Have the agent check its mailbox, the latest 10</span>
+<span class="n">mail</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"inbox"</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="how-youll-use-it">How you'll use it</h3>
+<p>Once your agent's mailbox is set up, you can <strong>communicate with the agent over email</strong>. For example:</p>
+<blockquote>
+<p>You're on a business trip. You email the agent at home: "Help me put together the weekly report and send it to me." When it receives your message, it <strong>wakes up on its own</strong>, opens your email, handles it, and replies to you over email.</p>
+</blockquote>
+<p>This is also why it's called "Perception &amp; Communication" — <strong>email is one path through which the agent perceives the outside world and proactively responds to you</strong>.</p>
+<div class="admonition warning">
+<p class="admonition-title">A security note</p>
+<p>You can configure your <strong>personal mailbox</strong> and have the agent help organize it. But <strong>use autonomous perception mode with caution</strong> — there's no guarantee that <strong>instructions embedded in malicious emails</strong> won't steer the agent into doing something wrong. In the future, IDES will consider adding a switch so that <strong>only whitelisted mailbox accounts</strong> can be perceived autonomously.</p>
+</div>
+<h2 id="message-platform-adapters">Message Platform Adapters</h2>
+<p>Email "communication" means sending email. Message platform adapters, on the other hand, let you talk to the agent through <strong>instant messaging apps</strong> (WeChat, Telegram, Yuanbao... ) — so even when you're away, you can reach it anytime.</p>
+<p>See <a href="/en/equipment/#channel">Equipment · channel</a> for the core mechanism behind channels.</p>
+<h3 id="wechat-clawbot">WeChat ClawBot</h3>
+<p><strong>WeChat ClawBot</strong> connects you to <strong>personal WeChat</strong> — after you scan a QR code with your personal WeChat, the agent can talk to you there. However you normally use WeChat, you can chat with your agent the same way.</p>
+<p>It's a standard adapter (plug-and-play), open-sourced on GitHub: <a href="https://github.com/kaluluosi/ides_adapter_weixin">https://github.com/kaluluosi/ides_adapter_weixin</a></p>
+<p>Connecting WeChat takes three steps total, and <strong>you don't need to configure MCP yourself</strong> — just send a message to the agent and it'll handle it.</p>
+<h4 id="step-1-send-the-config-to-the-agent">Step 1: Send the config to the agent</h4>
+<p><strong>Send your agent</strong> the config below (or the GitHub link above), and it'll register this adapter MCP on its own:</p>
+<div class="highlight"><pre><span></span><code><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"weixin"</span>
+<span class="n">transport</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"stdio"</span>
+<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"uvx"</span>
+<span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"ides-adapter-weixin"</span><span class="p">]</span>
+<span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">exclude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
+
+<span class="k">[env]</span>
+<span class="n">WEIXIN_ACCOUNT_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"default"</span>
+</code></pre></div>
+<p>You don't have to touch any config file — the agent will set it up for you automatically.</p>
+<div class="admonition tip">
+<p class="admonition-title">Connecting multiple WeChat accounts</p>
+<p><code>WEIXIN_ACCOUNT_ID</code> gives each WeChat account a name. The default is <code>default</code>; if you want to connect <strong>multiple WeChat accounts</strong>, change this value — one account per entry.</p>
+</div>
+<h4 id="step-2-the-agent-will-ask-you-to-bind-via-qr-code">Step 2: The agent will ask you to bind via QR code</h4>
+<p>Once registered, the agent will ask you to <strong>scan a QR code to bind</strong> your personal WeChat:</p>
+<div class="highlight"><pre><span></span><code>The agent initiates the connection
+ → A QR code appears on screen
+ → You scan it with your personal WeChat
+ → Confirm the login
+ → Your WeChat is now bound to the agent
+</code></pre></div>
+<h4 id="step-3-have-the-agent-send-wechat-a-message">Step 3: Have the agent send WeChat a message</h4>
+<p>Once bound, <strong>turn on autonomous perception mode</strong> and have the agent send a message to WeChat ClawBot — then it can talk to you over WeChat.</p>
+<h4 id="what-it-can-do">What it can do</h4>
+<p>Once connected, it can receive and reply to messages you send in WeChat. It's like having an "AI friend" in WeChat that you can turn to anytime to get things done.</p>
+<div class="admonition note">
+<p class="admonition-title">ClawBot connects to personal WeChat</p>
+<p>ClawBot connects to <strong>personal WeChat</strong> (login by scanning a QR code). <strong>WeCom</strong> is a different story — its group bot can only <strong>send</strong>; for two-way communication you'd need "WeCom (Application)". Don't mix them up.</p>
+</div>
+<h3 id="custom-platform-adapters">Custom Platform Adapters</h3>
+<p>After seeing "connect to personal WeChat," you might wonder: what if I want to connect the agent to <strong>another platform</strong> (Telegram, Yuanbao, or even my own app)?</p>
+<p>The answer is simple — <strong>IDES doesn't build a separate integration for every platform</strong>. It uses one unified connection method (channel); you just <strong>write a connector for the new platform by following the pattern</strong> and it's in.</p>
+<h4 id="start-by-looking-at-this-reference-project">Start by looking at this reference project</h4>
+<p>If you want to connect the agent to any platform, the best starting point is the <strong><code>ides_adapter_weixin</code></strong> project — it <strong>is the reference example (template) for platform adapters</strong>:</p>
+<p><a href="https://github.com/kaluluosi/ides_adapter_weixin">https://github.com/kaluluosi/ides_adapter_weixin</a></p>
+<p>This WeChat adapter looks like it's for "one specific platform," but it actually demonstrates a <strong>general-purpose connection method</strong> — follow its pattern and you can connect any other platform.</p>
+<h4 id="follow-it-to-connect-your-platform">Follow it to connect your platform</h4>
+<ul>
+<li>IDES <strong>doesn't</strong> build one integration for WeChat and another for Telegram</li>
+<li><strong>Any platform</strong> can be connected using the <strong>same connection method</strong></li>
+<li><code>ides_adapter_weixin</code> is <strong>a ready-made template</strong> for this approach — see how it connects and you'll know how to connect other platforms</li>
+</ul>
+<p>The core idea in one sentence: <strong>one platform = write a connector, and it's connected into IDES.</strong> WeChat was built following this template, and so can any other platform.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

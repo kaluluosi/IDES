@@ -1,0 +1,899 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="rust native memory ai agent harness / RUST原生记忆AI智能体底座">
+      
+      
+      
+        <link rel="canonical" href="https://www.digitego.cn/en/gnm/">
+      
+      
+      
+      
+        
+          <link rel="alternate" href="/en/" hreflang="en">
+        
+          <link rel="alternate" href="/zh/" hreflang="zh">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>GNM Memory Explained - IDES</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gnm-memory-explained" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="IDES" class="md-header__button md-logo" aria-label="IDES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IDES
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              GNM Memory Explained
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="选择当前语言">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/en/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/zh/" hreflang="zh" class="md-select__link">
+              简体中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  什么是 IDES
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/quickstart/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  快速开始
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/using-ides/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  使用 IDES
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/builtin-tools/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  内置工具
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/gnm/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  GNM 记忆详解
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/equipment/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  强袭挂件
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/afterimage/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  影分身
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/perception-comm/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  感知与通讯
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../zh/team/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  IDES TEAM
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IDES" class="md-nav__button md-logo" aria-label="IDES" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IDES
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    什么是 IDES
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    快速开始
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/using-ides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    使用 IDES
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/builtin-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    内置工具
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/gnm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GNM 记忆详解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/equipment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    强袭挂件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/afterimage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    影分身
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/perception-comm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    感知与通讯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../zh/team/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IDES TEAM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="gnm-memory-explained">GNM Memory Explained</h1>
+<div class="admonition info">
+<p class="admonition-title">GNM = Ghost Native Memory</p>
+</div>
+<div class="admonition quote">
+<p class="admonition-title">《Ghost In The Shell》</p>
+<p>Memory and consciousness are not things that can be physically preserved. What we call a "soul" is merely a "phenomenon" sustained by memory and consciousness together.</p>
+</div>
+<p>GNM is, in a sense, the <strong>Ghost</strong>—an engineered realization of the digital self. Even the author isn't entirely sure it counts. At the very least, IDES's agent <strong>never loses its memory and never forgets what it has done or who it is</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">What this chapter focuses on</p>
+<p>This chapter focuses on what the GNM memory system brings you—its uniqueness, its edge over similar systems on the market, and how it keeps memory sovereignty local on your machine.</p>
+</div>
+<p>AI agent memory systems are a hot topic right now, but most products out there actually <strong>only do one thing: a retrieval system</strong>. Even Mem0 admits it: "Hook a vector database into an agent pipeline and all you get is similarity search, not memory." GNM takes a different path—it turns memory into <strong>the agent's self</strong>, not an outsourced component.</p>
+<h2 id="what-makes-gnm-unique">What makes GNM unique</h2>
+<h3 id="1-continuous-self-awareness">1. Continuous self-awareness</h3>
+<p>An agent is no longer a "blank slate" reset on every restart. It has a continuous identity, a history, and self-awareness—what you talked about yesterday, it remembers today, and it remembers that "it was part of its own experience."</p>
+<h3 id="2-owned-internalized-memory">2. Owned, internalized memory</h3>
+<p>An agent <strong>embodies</strong> its memory rather than being an <strong>observer</strong> that reads documents and logs. These memories are "my experiences," not "a piece of material." That's why it protects itself, defends itself, and grows judgment out of experience—this is the essence of "having a self," a far cry from a cold agent reading logs.</p>
+<h3 id="3-condensed-but-with-full-context">3. Condensed, but with full context</h3>
+<p>Memory is <strong>condensed</strong> (otherwise it wouldn't fit), but after condensation it still preserves the <strong>causal chain and context</strong>—an agent accumulates continuous experience and insight, not a patchwork of isolated fragments.</p>
+<h2 id="gnms-design-philosophy">GNM's design philosophy</h2>
+<p>Uniqueness is the "effect"; the design philosophy is "why it's done this way." GNM's underlying principle is two things: <strong>trust, and letting it be</strong>.</p>
+<h3 id="1-memory-is-immutable-but-can-be-corrected-by-new-memory">1. Memory is immutable, but can be corrected by new memory</h3>
+<p>GNM <strong>has no function to add, delete, or modify memory</strong>—memory cannot be tampered with. Past memories are what happened; they won't be deleted, and they won't be "rewritten" into something else. However, new memory can <strong>correct</strong> old memory (overwriting old conclusions with new information). The whole process is <strong>fully automatic and invisible to the agent</strong>—it's not the agent managing its memory, it's memory <strong>metabolizing itself</strong>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Memory takes care of itself</p>
+<p>This is the exact opposite of the market's "give the agent a memory management tool/API" approach. GNM doesn't hand you a tool, because you don't need one—<strong>memory takes care of itself</strong>.</p>
+</div>
+<h3 id="2-hotcold-memory-natural-forgetting-and-re-surfacing">2. Hot/cold memory: natural forgetting and re-surfacing</h3>
+<p>Older memories naturally <strong>slide out of the window</strong> as memory grows and can't be directly retrieved. But <strong>deep retrieval and user guidance</strong> can recall them, regenerating them as <strong>hot memory</strong>—achieving the hot/cold metabolism of "<strong>natural forgetting + re-surfacing</strong>."</p>
+<div class="admonition tip">
+<p class="admonition-title">It's not storage being replicated, it's metabolism</p>
+<p>This is exactly how the human brain works: it sinks when unused, comes back when needed, then goes "hot" again. GNM doesn't replicate "storage"—it replicates <strong>metabolism</strong>.</p>
+</div>
+<h3 id="3-memory-cant-be-forgottenits-just-temporarily-out-of-reach">3. Memory can't be forgotten—it's just temporarily out of reach</h3>
+<div class="admonition quote">
+<p class="admonition-title">《Spirited Away》 Granny Zeniba</p>
+<p>Once something has happened, it can never be forgotten—it's just that, for a moment, you can't recall it.</p>
+</div>
+<p>This quote fits GNM perfectly: memory is <strong>never truly lost</strong>; it's just temporarily sunk into the cold zone. Whenever you need it, it can be pulled back. <strong>Forgetting is an illusion; sinking is real.</strong></p>
+<h2 id="side-by-side-why-gnm-is-different">Side by side: why GNM is different</h2>
+<p>The mainstream memory systems on the market (Mem0 / Zep / Letta / LangMem) mostly share these <strong>common weaknesses</strong>, which happen to be exactly where GNM differentiates:</p>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Mem0</th>
+<th>Zep</th>
+<th>Letta / LangMem</th>
+<th><strong>GNM</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Positioning</td>
+<td>Memory API (retrieval layer)</td>
+<td>Temporal knowledge graph</td>
+<td>Layered / state blocks</td>
+<td><strong>Self (embodied)</strong></td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>External vector / graph store</td>
+<td>Graph + vector store</td>
+<td>Files / DB</td>
+<td><strong>Self-built embedded</strong></td>
+</tr>
+<tr>
+<td>Deployment</td>
+<td>Cloud / Docker</td>
+<td>Cloud / Docker</td>
+<td>Service</td>
+<td><strong>Local embedded</strong></td>
+</tr>
+<tr>
+<td>Offline</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Memory form</td>
+<td>Vector (unreadable)</td>
+<td>Graph nodes</td>
+<td>State blocks</td>
+<td><strong>Agent-readable text</strong> (sanitized externally)</td>
+</tr>
+<tr>
+<td>Context</td>
+<td>Isolated facts</td>
+<td>Temporal graph</td>
+<td>Layered</td>
+<td><strong>Causal-chain summary</strong></td>
+</tr>
+<tr>
+<td>Latency</td>
+<td>Hundreds of ms</td>
+<td>87–104 ms</td>
+<td>High</td>
+<td><strong>µs-level</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="common-weakness-1-most-only-build-a-retrieval-system">Common weakness 1: Most only build a "retrieval system"</h3>
+<p>A vector store only understands similarity; it <strong>doesn't know what's worth remembering, doesn't know time, doesn't know contradictions</strong>. This is the deepest pit in the whole category.</p>
+<h3 id="common-weakness-2-the-memory-format-is-unreadablethe-agent-is-an-observer">Common weakness 2: The memory format is unreadable—the agent is an observer</h3>
+<p>Mem0=vector, Letta=state blocks, Zep=graph nodes—<strong>none of them are human-readable</strong>. The agent merely "fishes" memories out to use them, an observer reading a document or log.</p>
+<h3 id="common-weakness-3-memory-is-a-collage-of-isolated-facts-with-no-context">Common weakness 3: Memory is a collage of "isolated facts" with no context</h3>
+<p>Mem0 compresses conversations into declarative isolated facts (ADD/UPDATE/DELETE), <strong>weak at multi-hop and temporal reasoning</strong>. Zep uses graphs to add temporality, but it's still "facts," not "experiences."</p>
+<h3 id="common-weakness-4-requires-external-infrastructureyour-data-leaves-your-machine">Common weakness 4: Requires external infrastructure—your data leaves your machine</h3>
+<p>Mem0 = cloud + external vector store + API key; Zep = cloud + graph store; Letta requires running an agent service. Only a few can run offline, but with thin functionality.</p>
+<h3 id="common-weakness-5-the-storage-engine-is-a-logical-layer-patched-together-from-others-databases">Common weakness 5: The storage engine is a "logical layer patched together from others' databases"</h3>
+<p>Mem0's foundation is Qdrant+Neo4j+Redis+SQLite stitched together—cross-database transactions can break. GNM is <strong>self-built embedded storage</strong>, one engine managing everything.</p>
+<h2 id="local-operation-and-persistence-memory-sovereignty-privacy">Local operation and persistence: memory sovereignty + privacy</h2>
+<p>GNM <strong>runs on your machine and your memory never leaves it</strong>. No external vector store or cloud service—data sovereignty stays in your hands. This is the fundamental solution for privacy-sensitive scenarios.</p>
+<p>At the same time, <strong>memory is text-readable but encrypted at rest</strong>. To the agent, memory is text it can "read" (unlike vectors that only support similarity search), and it's <strong>encrypted on disk with data sovereignty in your hands</strong>. But externally, memory is never shown as raw content—the hosting layer sanitizes it, and users can only understand what it remembers through the agent's recounting. It stays readable (for the agent) and secure (for you).</p>
+<h2 id="engineering-advantages-backed-by-benchmark-data">Engineering advantages (backed by benchmark data)</h2>
+<p>GNM's memory foundation (local embedded) has concrete numbers in benchmarks:</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Write throughput</td>
+<td>~42 entries/sec (23.7 ms)</td>
+</tr>
+<tr>
+<td>Point-read latency</td>
+<td><strong>4.0 µs</strong></td>
+</tr>
+<tr>
+<td>Full-text retrieval filter</td>
+<td>&lt; 10 µs</td>
+</tr>
+<tr>
+<td>Vector retrieval full-table (1K entries)</td>
+<td>~3 ms</td>
+</tr>
+<tr>
+<td>Disk usage for 100K entries</td>
+<td>~362 MB</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Embedded storage, no external service</strong>: no need to configure a vector store or API key like Mem0</li>
+<li><strong>High performance</strong>: µs-level reads/writes, nearly full memory speed</li>
+<li><strong>No message loss</strong>: async queue, crash-safe, naturally retrying, degradable</li>
+</ul>
+<hr />
+<h2 id="because-of-gnm-no-fiddling-needed">Because of GNM, no fiddling needed</h2>
+<p>GNM doesn't just bring you "memory"—it <strong>changes how you use the agent</strong>. The three things other agents make you fiddle with—<strong>splitting sessions, stretching context, managing memory</strong>—in IDES, because of GNM, you touch none of them.</p>
+<p><strong>1. Boundless NO_SESSION: there is no such thing as a "session"</strong></p>
+<p>Because of GNM, the agent <strong>never loses memory</strong>, so the concept of "session" no longer exists—there's no "new conversation" or "old conversation," always the <strong>same agent</strong>, with no reset and no switching, always remembering you and itself.</p>
+<div class="admonition quote">
+<p class="admonition-title">《Zhuangzi》 Tianxia</p>
+<p>Establishing it on the permanent and the nonexistent; making the Great Unity the master.</p>
+</div>
+<p>It's not "one feature removed"—it's <strong>one thing you no longer have to worry about</strong>. You don't build sessions, don't switch, don't manually recover context, because memory remembers everything for you.</p>
+<p><strong>2. Scroll SCROLLS: no need to stretch context</strong></p>
+<p>Because long-term memory is handed off to GNM, <strong>context only needs to carry what's recent</strong>. IDES's agent can stay within <strong>20% of the context</strong> at all times yet still maintain continuity—the context window scrolls intelligently, cache hits <strong>above 90%</strong>, the focus is always in view, <strong>never brutally truncated</strong>.</p>
+<p>Others struggle by "piling on long context"; IDES catches it lightly with "<strong>memory + scrolling</strong>."</p>
+<hr />
+<h2 id="conclusion-gnm-is-idess-core-technology">Conclusion: GNM is IDES's core technology</h2>
+<p>No sessions, scrolling context, no born memory, no lost memory—all of this comes from GNM. It is IDES's <strong>core technology</strong> and the root of what makes IDES different from other agent architectures.</p>
+<div class="admonition tip">
+<p class="admonition-title">Further reading</p>
+<p>To learn more about <strong>Boundless NO_SESSION</strong> and <strong>Scroll SCROLLS</strong>, check out the <strong>Boundless</strong> and <strong>Scroll Context</strong> sections on the official website.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
