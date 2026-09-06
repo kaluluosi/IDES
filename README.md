@@ -1,3 +1,10 @@
+[English](README-en.md)
+
+![](docs/ide-boot.png)
+![](docs/ides-mem-chat.png)
+
+
+
 # 什么是 IDES
 
 > [!NOTE]
