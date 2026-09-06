@@ -1,5 +1,9 @@
-[中文](README.md)
+<p align="center">
+  <strong>English</strong> | <a href="./README.zh-CN.md">简体中文</a>
+</p>
 
+# IDES
+A Rust-native memory AI agent framework...
 ![](docs/ide-boot.png)
 ![](docs/ides-mem-chat.png)
 
