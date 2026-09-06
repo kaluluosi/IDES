@@ -1,3 +1,9 @@
+[中文](README.md)
+
+![](docs/ide-boot.png)
+![](docs/ides-mem-chat.png)
+
+
 What is IDES
 
 [!NOTE]
