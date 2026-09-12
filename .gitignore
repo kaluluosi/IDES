@@ -5,3 +5,11 @@ __pycache__/
 
 # mkdocs 构建产物
 site/
+
+# 服务器部署配置（nginx 等）——本仓库是公开仓库，配置含服务器路径 /
+# 证书路径等内部信息，不入库。正本在服务器 /etc/nginx/sites-available/。
+deploy/
+
+# 部署环境配置（服务器地址 / 路径）——本仓库公开，环境信息不入库。
+# 模板见 deploy.local.env.example。
+deploy.local.env
