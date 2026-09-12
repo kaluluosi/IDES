@@ -65,6 +65,7 @@ plugins:
             影分身: Afterimage
             感知与通讯: Perception & Communication
             IDES TEAM: IDES TEAM
+            开源许可: Open Source Licenses
 
 # index.md 作为各语言 homepage（生成 / 被官网夺舍覆盖，不显示但满足 i18n homepage 机制）
 # what-is-ides.md 是官网 DOCS 跳转的"什么是 IDES"落地页（保留文件，官网跳这里，不进 nav 避免重复）
@@ -80,3 +81,4 @@ nav:
   - 影分身: afterimage.md
   - 感知与通讯: perception-comm.md
   - IDES TEAM: team.md
+  - 开源许可: licenses.md
